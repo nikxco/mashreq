@@ -1,0 +1,21 @@
+{
+  "name": "@mashreq/monorepo",
+  "version": "1.0.0",
+  "description": "Monorepo for mashreq assessment apps",
+  "private": "true",
+  "workspaces": [
+    "apps/*",
+    "services/*"
+  ],
+  "scripts": {
+    "start:web": "npm --prefix ./apps/web run start"
+  },
+  "author": "Nadeem Ahmad",
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.8",
+    "@babel/preset-react": "^7.23.3",
+    "@babel/preset-typescript": "^7.23.3",
+    "lerna": "^8.0.2",
+    "typescript": "^5.3.3"
+  }
+}
