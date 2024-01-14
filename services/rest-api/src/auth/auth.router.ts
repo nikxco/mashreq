@@ -1,12 +1,12 @@
 import express, { Router } from 'express';
-import { LoginController } from "./auth.controller";
+import { SignInController } from "./auth.controller";
 
 const router: Router = express.Router()
 
 router
     .route('/')
     .post(
-        LoginController
+        SignInController
     )
 
 export default { path: '/auth', router }

@@ -1,7 +1,7 @@
-import { Avatar, IconButton, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material"
+import { Avatar, Button, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material"
 import { MouseEvent, useState } from "react"
 import { useBasename } from "../../hooks/basename.hook"
-import { DefaultCountry, countryToBasename, getSupportedContries } from "../../util"
+import { basenameToCountry, countryToBasename, getSupportedContries } from "../../util"
 
 export type Country = {
     code: string,
@@ -18,6 +18,7 @@ const CountrySelectorComponent = () => {
     const [open, setOpen] = useState(false);
     const [anchorElement, setAnchorElement] = useState<null | HTMLElement>();
     const selectedBasename = useBasename();
+    const selectedCountry = basenameToCountry(selectedBasename)
     const onOpen = (event: MouseEvent<HTMLButtonElement>) => {
         setAnchorElement(event.currentTarget);
         setOpen(true);
@@ -35,11 +36,6 @@ const CountrySelectorComponent = () => {
         const value = countryToBasename(country);
         return value === selectedBasename;
     }
-    const getSelectedValue = () => {
-        return supportedCountries.find((country) => {
-            return isSelected(country);
-        }) || DefaultCountry
-    }
     const renderFlagIcon = (country: Country) => {
         const { code } = country;
         return (
@@ -52,9 +48,11 @@ const CountrySelectorComponent = () => {
     }
     return (
         <>
-            <IconButton onClick={onOpen}>
-                {renderFlagIcon(getSelectedValue())}
-            </IconButton>
+            <Button color="inherit" variant="outlined" onClick={onOpen} startIcon={renderFlagIcon(selectedCountry)}>
+                {
+                    selectedCountry.name
+                }
+            </Button>
             <Menu
                 key="country-selector"
                 anchorEl={anchorElement}

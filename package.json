@@ -8,7 +8,8 @@
     "services/*"
   ],
   "scripts": {
-    "start:web": "npm --prefix ./apps/web run start"
+    "start:web": "npm --prefix ./apps/web run start",
+    "start:api": "npm --prefix ./services/rest-api run start:dev"
   },
   "author": "Nadeem Ahmad",
   "devDependencies": {

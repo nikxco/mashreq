@@ -2,7 +2,8 @@ import 'dotenv/config';
 import express, { Express, Router } from 'express';
 import cors, { CorsOptions } from "cors";
 import AuthRouter from './auth/auth.router';
-import { ApiKeyValidator } from './common/common.validators';
+import UserRouter from './users/user.router';
+import { ApiKeyValidator } from './common/validator.common';
 import { validateEnvVariables } from './common/util.common';
 
 /**
@@ -44,6 +45,8 @@ appRouter.use(ApiKeyValidator)
  * Add individual routers to app router
  */
 appRoutes.push(AuthRouter);
+appRoutes.push(UserRouter);
+
 
 app.listen(port, () => {
     appRoutes.forEach((route) => {

@@ -12,6 +12,7 @@ import './App.css';
 import { getAppRouter } from './app.router';
 import { initializei18n } from './i18n';
 import { basenameToCountry, getPaletteByCountry } from './util';
+import { CookiesProvider } from 'react-cookie';
 declare module "@mui/material/Paper" {
   interface PaperPropsVariantOverrides {
     flat: true;
@@ -22,8 +23,8 @@ function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const path = window.location.pathname
   const basename = `/${path.split('/')[1]}`
+  console.log('basename', basename);
   const selectedCountry = basenameToCountry(basename);
-
   const theme = useMemo(
     () =>
       createTheme({
@@ -73,7 +74,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <RouterProvider router={getAppRouter(basename)} key={basename} />
+      <CookiesProvider defaultSetOptions={{ path: '/' }}>
+        <RouterProvider router={getAppRouter(basename)} key={basename} />
+      </CookiesProvider>
     </ThemeProvider>
   );
 }

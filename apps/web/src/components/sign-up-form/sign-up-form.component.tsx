@@ -1,35 +1,26 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import {
-    LoginOutlined, VisibilityOffOutlined,
-    VisibilityOutlined
-} from '@mui/icons-material';
-import {
-    Button, Card, CardContent, CardHeader,
-    Container, IconButton, InputAdornment,
-    Stack, TextField, Tooltip, Typography,
-    useMediaQuery, useTheme
-} from '@mui/material';
+import { LoginOutlined, VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material';
+import LoadingButton from '@mui/lab/LoadingButton';
+import { Button, Card, CardContent, CardHeader, Container, IconButton, InputAdornment, Stack, TextField, Tooltip, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useState } from "react";
-import { useCookies } from "react-cookie";
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppSnackbar } from "../../hooks/app-snackbar.hook";
 import { useBasename } from "../../hooks/basename.hook";
-import { signIn } from "../../pages/services/auth.service";
+import { createUser } from "../../pages/services/users.service";
 import { basenameToCountry } from "../../util";
 import AppSnackbarComponent from "../app-snackbar/app-snackbar.component";
-import { getSgnInFormSchema } from "./schema";
-const SignInFormComponent = () => {
+import { getSignUpFormSchema } from "./schema";
+const SignUpFormComponent = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
-    const { state: { open: isSnackbarOpen, message: snackbarMessage, severity: snackbarSeverity }, closeSnackbar, openSnackbar } = useAppSnackbar();
     const basename = useBasename();
-    const navigate = useNavigate()
-    const selectedCountry = basenameToCountry(basename);
+    const selectedCountry = basenameToCountry(basename)
     const { t: translate } = useTranslation();
-    const [cookies, setCookie, removeCookie] = useCookies();
+    const navigate = useNavigate();
+    const { state: { open: isSnackbarOpen, message: snackbarMessage, severity: snackbarSeverity }, closeSnackbar, openSnackbar } = useAppSnackbar();
     const {
         register,
         handleSubmit,
@@ -38,7 +29,10 @@ const SignInFormComponent = () => {
             errors
         }
     } = useForm({
-        resolver: yupResolver(getSgnInFormSchema(selectedCountry))
+        defaultValues: {
+            basename,
+        },
+        resolver: yupResolver(getSignUpFormSchema(selectedCountry))
     });
 
     const togglePasswordVisibility = () => {
@@ -46,13 +40,12 @@ const SignInFormComponent = () => {
     }
 
     const onFormSubmit = async (data: any) => {
-        return signIn(data).then(({ accessToken }) => {
-            setCookie('mq-at', accessToken);
+        return createUser(data).then(() => {
             openSnackbar({
                 message: 'Success!',
                 severity: 'success',
             });
-            navigate('/users');
+            navigate('/signin');
         }).catch((error) => {
             openSnackbar({
                 message: 'Failed',
@@ -64,16 +57,16 @@ const SignInFormComponent = () => {
         <Container maxWidth="xs">
             <Card variant={isMobile ? 'flat' : 'elevation'}>
                 <CardHeader
-                    title={<Typography variant='h4'>{translate('signInPage.form.title')}</Typography>}
+                    title={<Typography variant='h4'>{translate('signUpPage.form.title')}</Typography>}
                 />
                 <CardContent>
                     <form onSubmit={handleSubmit(onFormSubmit)} noValidate>
                         <Stack gap={3} mb={2}>
                             <TextField
                                 fullWidth
-                                label={translate('signInPage.form.inputs.username.label')}
-                                placeholder={translate('signInPage.form.inputs.username.placeholder')}
-                                key="signIn-username"
+                                label={translate('signUpPage.form.inputs.username.label')}
+                                placeholder={translate('signUpPage.form.inputs.username.placeholder')}
+                                key="signUp-username"
                                 error={!!errors.username}
                                 required
                                 disabled={isSubmitting}
@@ -83,9 +76,9 @@ const SignInFormComponent = () => {
                             <TextField
                                 type={passwordVisible ? 'text' : 'password'}
                                 fullWidth
-                                label={translate('signInPage.form.inputs.password.label')}
-                                placeholder={translate('signInPage.form.inputs.password.placeholder')}
-                                key="signIn-password"
+                                label={translate('signUpPage.form.inputs.password.label')}
+                                placeholder={translate('signUpPage.form.inputs.password.placeholder')}
+                                key="signUp-password"
                                 error={!!errors.password}
                                 required
                                 disabled={isSubmitting}
@@ -95,8 +88,8 @@ const SignInFormComponent = () => {
                                     {
                                         endAdornment: (
                                             <InputAdornment position="end">
-                                                <Tooltip title={translate(passwordVisible ? 'signInPage.form.tooltips.hidePassword' : 'signInPage.form.tooltips.showPassword')}>
-                                                    <IconButton onClick={() => togglePasswordVisibility()}>
+                                                <Tooltip title={translate(passwordVisible ? 'signUpPage.form.tooltips.hidePassword' : 'signUpPage.form.tooltips.showPassword')}>
+                                                    <IconButton onClick={() => togglePasswordVisibility()} disabled={isSubmitting}>
                                                         {
                                                             passwordVisible ? <VisibilityOffOutlined /> : <VisibilityOutlined />
                                                         }
@@ -107,17 +100,37 @@ const SignInFormComponent = () => {
                                     }
                                 }
                             />
+                            <TextField
+                                type="password"
+                                fullWidth
+                                label={translate('signUpPage.form.inputs.confirmPassword.label')}
+                                placeholder={translate('signUpPage.form.inputs.confirmPassword.placeholder')}
+                                key="signUp-confirmPassword"
+                                error={!!errors.confirmPassword}
+                                required
+                                disabled={isSubmitting}
+                                {...register("confirmPassword")}
+                                helperText={errors?.confirmPassword?.message?.toString()}
+                            />
                             <Stack direction="row" gap={2}>
-                                <Button type='submit' variant='contained' disableElevation size='large' startIcon={<LoginOutlined />} >
-                                    {translate('signInPage.form.buttons.signIn')}
-                                </Button>
-                                <Button component={NavLink} to="/signup" variant='text' color="inherit">
-                                    {translate('signInPage.form.buttons.signUp')}
+                                <LoadingButton
+                                    type="submit"
+                                    size="large"
+                                    loading={isSubmitting}
+                                    loadingPosition="start"
+                                    startIcon={<LoginOutlined />}
+                                    variant="contained"
+                                    disableElevation
+                                >
+                                    {translate('signUpPage.form.buttons.create')}
+                                </LoadingButton>
+                                <Button component={NavLink} to="/signin" variant='text' color="inherit">
+                                    {translate('signUpPage.form.buttons.signIn')}
                                 </Button>
                             </Stack>
                         </Stack>
                         <Typography variant="caption" color='text.secondary'>
-                            {translate('signInPage.form.termsLabel')}
+                            {translate('signUpPage.form.termsLabel')}
                         </Typography>
                     </form>
                 </CardContent>
@@ -127,4 +140,4 @@ const SignInFormComponent = () => {
     )
 }
 
-export default SignInFormComponent
+export default SignUpFormComponent

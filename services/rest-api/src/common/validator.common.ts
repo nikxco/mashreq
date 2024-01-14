@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { HttpHeader, HttpStatus } from "./common.constant";
+import { HttpHeader, HttpStatus } from "./constant.common";
 import { getBearerToken } from "./util.common";
 import { verify } from "jsonwebtoken";
 import { User } from "../auth/auth.type";
@@ -41,8 +41,8 @@ export const parseJwtTokenMiddleware = async (req: Request, res: Response, next:
         if (token) {
             const decodedToken = verify(token, appSecret);
             if (decodedToken) {
-                const { id, name, email, emailVerified, roles } = decodedToken as any;
-                req.user = { id, name, email, emailVerified, roles } as User;
+                const { username, id } = decodedToken as any;
+                req.user = { id, username } as User;
             }
         } else {
             console.log("Token not available");

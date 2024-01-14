@@ -21,7 +21,7 @@ const resources = {
                     },
                     buttons: {
                         signIn: 'تسجيل الدخول',
-                        forgotPassword: 'هل نسيت كلمة السر؟'
+                        signUp: 'إنشاء حساب'
                     },
                     termsLabel: 'بتسجيل الدخول، فإنك توافق على شروط الاستخدام وسياسة الخصوصية الخاصة بنا. إذا كنت بحاجة إلى مساعدة بشأن حسابك، يرجى الاتصال بنا على .'
                 }
@@ -46,7 +46,7 @@ const resources = {
                     },
                     buttons: {
                         signIn: 'साइन इन',
-                        forgotPassword: 'पासवर्ड भूल गए?'
+                        signUp: 'खाता बनाएं'
                     },
                     termsLabel: `साइनइन करके, आप हमारी उपयोग की शर्तों और गोपनीयता नीति से सहमत होते हैं। यदि आपको अपने खाते के संबंध में सहायता चाहिए, तो कृपया हमसे संपर्क करें।`
                 }
@@ -71,10 +71,46 @@ const resources = {
                     },
                     buttons: {
                         signIn: 'Sign in',
-                        forgotPassword: 'Forgot password?'
+                        signUp: 'Create account?'
+                    },
+                    tooltips: {
+                        hidePassword: 'Hide password',
+                        showPassword: 'Show password'
                     },
                     termsLabel: 'By sign in, you agree to our Terms of Use, and  Privacy Policy. If you need help with your account, please contact us.'
                 }
+            },
+            signUpPage: {
+                title: 'Sign up | Mashreq Net Banking',
+                form: {
+                    title: 'Sign up',
+                    inputs: {
+                        username: {
+                            label: 'Username',
+                            placeholder: 'Enter your username'
+                        },
+                        password: {
+                            label: 'Password',
+                            placeholder: 'Password'
+                        },
+                        confirmPassword: {
+                            label: 'Confirm Password',
+                            placeholder: 'Confirm Password'
+                        }
+                    },
+                    buttons: {
+                        create: 'Create',
+                        signIn: 'Sign in instead?'
+                    },
+                    tooltips: {
+                        hidePassword: 'Hide password',
+                        showPassword: 'Show password'
+                    },
+                    termsLabel: 'By sign up, you agree to our Terms of Use, and  Privacy Policy. If you need help with your account, please contact us.'
+                }
+            },
+            usersPage: {
+                pageTitle: "Users"
             }
         }
     },
@@ -96,7 +132,7 @@ const resources = {
                     },
                     buttons: {
                         signIn: 'Se connecter',
-                        forgotPassword: 'Mot de passe oublié?'
+                        signUp: 'Créer un compte'
                     },
                     termsLabel: `En vous connectant, vous acceptez nos conditions d'utilisation et notre politique de confidentialité. Si vous avez besoin d'aide avec votre compte, veuillez nous contacter à.`
                 }
