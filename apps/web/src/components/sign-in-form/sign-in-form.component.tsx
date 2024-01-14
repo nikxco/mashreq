@@ -15,20 +15,16 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppSnackbar } from "../../hooks/app-snackbar.hook";
-import { useBasename } from "../../hooks/basename.hook";
+import { HttpStatus } from "../../http.contstant";
 import { signIn } from "../../pages/services/auth.service";
-import { basenameToCountry } from "../../util";
 import AppSnackbarComponent from "../app-snackbar/app-snackbar.component";
 import { getSgnInFormSchema } from "./schema";
-import { HttpStatus } from "../../http.contstant";
 const SignInFormComponent = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
     const { state: { open: isSnackbarOpen, message: snackbarMessage, severity: snackbarSeverity }, closeSnackbar, openSnackbar } = useAppSnackbar();
-    const basename = useBasename();
     const navigate = useNavigate()
-    const selectedCountry = basenameToCountry(basename);
     const { t: translate } = useTranslation();
     const [cookies, setCookie, removeCookie] = useCookies();
     const {
@@ -40,7 +36,7 @@ const SignInFormComponent = () => {
             errors
         }
     } = useForm({
-        resolver: yupResolver(getSgnInFormSchema(selectedCountry))
+        resolver: yupResolver(getSgnInFormSchema())
     });
 
     const togglePasswordVisibility = () => {
