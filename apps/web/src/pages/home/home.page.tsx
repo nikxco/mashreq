@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSession } from '../../hooks/session.hook';
 import { Session } from '../../providers/session-provider/session-provider.component';
 import { User } from '../../common.type';
+import { AddCircleOutline, AddOutlined, LoginOutlined } from '@mui/icons-material';
 const HomePage = () => {
     const session = useSession();
     const { user } = session ?? {} as Session;
@@ -17,10 +18,10 @@ const HomePage = () => {
             {
                 !user && (
                     <Stack direction="row" gap={2}>
-                        <Button component={NavLink} to="/signup" variant="contained" disableElevation size='large'>
+                        <Button component={NavLink} startIcon={<AddCircleOutline />} to="/signup" variant="contained" disableElevation size='large'>
                             Sign up
                         </Button>
-                        <Button component={NavLink} to="/signin" variant="outlined" size='large'>
+                        <Button component={NavLink} startIcon={<LoginOutlined />} to="/signin" variant="outlined" size='large'>
                             Sign in
                         </Button>
                     </Stack>

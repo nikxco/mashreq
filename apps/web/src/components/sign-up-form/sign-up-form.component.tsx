@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { LoginOutlined, VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material';
+import { AddCircleOutline, LoginOutlined, VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { Button, Card, CardContent, CardHeader, Container, IconButton, InputAdornment, Stack, TextField, Tooltip, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useState } from "react";
@@ -126,7 +126,7 @@ const SignUpFormComponent = () => {
                                     size="large"
                                     loading={isSubmitting}
                                     loadingPosition="start"
-                                    startIcon={<LoginOutlined />}
+                                    startIcon={<AddCircleOutline />}
                                     variant="contained"
                                     disableElevation
                                 >

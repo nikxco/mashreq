@@ -1,4 +1,4 @@
-import { AppBar, Avatar, Box, Button, Container, Stack, Toolbar, Typography } from "@mui/material";
+import { AppBar, Avatar, Box, Button, Container, Link, Stack, Toolbar, Typography } from "@mui/material";
 import { jwtDecode } from "jwt-decode";
 import { useCookies } from "react-cookie";
 import { NavLink, Outlet } from "react-router-dom";
@@ -56,7 +56,7 @@ const AppLayout = () => {
                         <Typography>Built with </Typography>
                         <Favorite color="error" sx={{ fontSize: '18px' }} />
                         <Typography>for</Typography>
-                        <Typography sx={{ fontWeight: 'bold' }}>Mashreq</Typography>
+                        <Typography sx={{ fontWeight: 'bold' }} color='inherit' component={Link} href="https://www.mashreqbank.com/" target="_blank">Mashreq</Typography>
                     </Stack>
                 </Stack>
             </Container>

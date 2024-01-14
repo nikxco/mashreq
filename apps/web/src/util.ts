@@ -134,15 +134,26 @@ export const getApiHeaders = (token?: string | null): HeadersInit => {
 export const countryToBasename = (country: Country) => {
     return country.basename;
 }
+
 export const basenameToCountry = (basename: string) => {
     if (basename === '/') {
         return DefaultCountry;
     }
     return getSupportedContries().find((country) => country.basename === basename)!;
 }
+
+export const getBasenameFromPath = (path: string) => {
+    const supportedBasenames = getSupportedContries()
+        .map(({ basename }) => basename.substring(1, basename.length));
+    const regex = new RegExp(`^\/(${supportedBasenames.join('|')})?`, 'gi');
+    let match = regex.exec(path);
+    return (match && match[0]) || '/';
+}
+
 export const basenameToLocale = (basename: string) => {
     return basenameToCountry(basename)?.locale;
 }
+
 export const getPaletteByCountry = (country: Country): { primary?: PaletteColorOptions, secondary?: PaletteColorOptions } => {
     let primary: PaletteColorOptions | undefined;
     const { code, name } = country;
@@ -175,5 +186,7 @@ export const getPaletteByCountry = (country: Country): { primary?: PaletteColorO
     }
     return { primary }
 }
-export const defaultCountryCode = 'US';
-export const DefaultCountry: Country = getSupportedContries().find((country) => country.code === defaultCountryCode)!
+
+export const DefaultCountryCode = 'IN';
+
+export const DefaultCountry: Country = getSupportedContries().find((country) => country.code === DefaultCountryCode)!

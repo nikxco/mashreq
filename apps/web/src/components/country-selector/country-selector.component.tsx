@@ -1,7 +1,7 @@
 import { Avatar, Button, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material"
 import { MouseEvent, useState } from "react"
 import { useBasename } from "../../hooks/basename.hook"
-import { basenameToCountry, countryToBasename, getSupportedContries } from "../../util"
+import { DefaultCountryCode, basenameToCountry, countryToBasename, getSupportedContries } from "../../util"
 
 export type Country = {
     code: string,
@@ -29,7 +29,7 @@ const CountrySelectorComponent = () => {
     }
     const onSelect = (country: Country) => {
         onClose();
-        const newBasename = countryToBasename(country);
+        const newBasename = country.code === DefaultCountryCode ? '/' : countryToBasename(country);
         window.location.replace(newBasename);
     }
     const isSelected = (country: Country) => {

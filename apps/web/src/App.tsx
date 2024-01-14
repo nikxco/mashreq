@@ -4,15 +4,15 @@ import {
   createTheme,
   useMediaQuery
 } from '@mui/material';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
+import { CookiesProvider } from 'react-cookie';
 import {
   RouterProvider
 } from "react-router-dom";
-import './App.css';
+import './app.css';
 import { getAppRouter } from './app.router';
 import { initializei18n } from './i18n';
-import { basenameToCountry, getPaletteByCountry } from './util';
-import { CookiesProvider } from 'react-cookie';
+import { DefaultCountry, basenameToCountry, getBasenameFromPath, getPaletteByCountry } from './util';
 declare module "@mui/material/Paper" {
   interface PaperPropsVariantOverrides {
     flat: true;
@@ -22,9 +22,12 @@ declare module "@mui/material/Paper" {
 function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const path = window.location.pathname
-  const basename = `/${path.split('/')[1]}`
+  const basename = getBasenameFromPath(path);
+  if (basename === DefaultCountry.basename) {
+    const newPath = `${window.location.origin}${path.substring(basename.length, path.length)}`;
+    window.location.replace(newPath)
+  }
   initializei18n(basename);
-  // console.log('basename', basename);
   const selectedCountry = basenameToCountry(basename);
   const theme = useMemo(
     () =>
