@@ -12,6 +12,7 @@ import { createUser } from "../../pages/services/users.service";
 import { basenameToCountry } from "../../util";
 import AppSnackbarComponent from "../app-snackbar/app-snackbar.component";
 import { getSignUpFormSchema } from "./schema";
+import { HttpStatus } from "../../http.contstant";
 const SignUpFormComponent = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -24,6 +25,7 @@ const SignUpFormComponent = () => {
     const {
         register,
         handleSubmit,
+        setError,
         formState: {
             isSubmitting,
             errors
@@ -46,11 +48,18 @@ const SignUpFormComponent = () => {
                 severity: 'success',
             });
             navigate('/signin');
-        }).catch((error) => {
-            openSnackbar({
-                message: 'Failed',
-                severity: 'error'
-            })
+        }).catch(({ code }) => {
+            console.log(code);
+            if (code === HttpStatus.Conflict) {
+                setError('username', {
+                    message: 'Username already exist'
+                })
+            } else {
+                openSnackbar({
+                    message: 'Failed',
+                    severity: 'error'
+                })
+            }
         });
     }
     return (

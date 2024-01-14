@@ -40,18 +40,8 @@ const AppSnackbarComponent = ({
       action={action}
       TransitionComponent={Slide}
       onClose={handleClose}
-    >
-      <Alert
-        sx={{ backgroundColor: "background.default" }}
-        variant="outlined"
-        onClose={() => {
-          handleClose();
-        }}
-        severity={severity}
-      >
-        {message}
-      </Alert>
-    </Snackbar>
+    />
+
   );
 };
 

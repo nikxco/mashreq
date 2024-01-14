@@ -20,6 +20,7 @@ import { signIn } from "../../pages/services/auth.service";
 import { basenameToCountry } from "../../util";
 import AppSnackbarComponent from "../app-snackbar/app-snackbar.component";
 import { getSgnInFormSchema } from "./schema";
+import { HttpStatus } from "../../http.contstant";
 const SignInFormComponent = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -33,6 +34,7 @@ const SignInFormComponent = () => {
     const {
         register,
         handleSubmit,
+        setError,
         formState: {
             isSubmitting,
             errors
@@ -47,17 +49,25 @@ const SignInFormComponent = () => {
 
     const onFormSubmit = async (data: any) => {
         return signIn(data).then(({ accessToken }) => {
-            setCookie('mq-at', accessToken);
+            setCookie('mq-at', accessToken, {
+                path: '/'
+            });
             openSnackbar({
                 message: 'Success!',
                 severity: 'success',
             });
             navigate('/users');
-        }).catch((error) => {
-            openSnackbar({
-                message: 'Failed',
-                severity: 'error'
-            })
+        }).catch(({ code }) => {
+            if (code === HttpStatus.Unauthorized) {
+                setError('username', {
+                    message: 'Wrong username or password'
+                })
+            } else {
+                openSnackbar({
+                    message: 'Failed',
+                    severity: 'error'
+                })
+            }
         });
     }
     return (

@@ -1,11 +1,10 @@
+import { ListAltOutlined, LogoutOutlined } from '@mui/icons-material';
 import { Avatar, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Tooltip } from '@mui/material';
+import { MouseEvent, useState } from 'react';
+import { useCookies } from 'react-cookie';
+import { NavLink } from 'react-router-dom';
 import { useSession } from '../../hooks/session.hook';
 import { Session } from '../../providers/session-provider/session-provider.component';
-import { ListAltOutlined, LogoutOutlined } from '@mui/icons-material';
-import { MouseEvent, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { signOut } from '../../pages/services/auth.service';
-import { useCookies } from 'react-cookie';
 
 const ProfileMenuComponent = () => {
     const session = useSession();
@@ -22,7 +21,9 @@ const ProfileMenuComponent = () => {
         setAnchorElem(null);
     }
     const onSignOut = () => {
-        removeCookies('mq-at');
+        removeCookies('mq-at', {
+            path: '/'
+        });
         handleClose()
     }
     const renderMenu = (

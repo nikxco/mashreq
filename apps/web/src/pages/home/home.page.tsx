@@ -30,9 +30,6 @@ const HomePage = () => {
                             <Typography>Welcome</Typography>
                             <Typography variant='h5'>{session.username}</Typography>
                         </Stack>
-                        <Button variant='outlined' size='large'>
-                            Sign out
-                        </Button>
                     </Stack>
                 )
             }

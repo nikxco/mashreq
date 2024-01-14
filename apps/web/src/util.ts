@@ -34,6 +34,10 @@ export const handleHttpErrors = (
                 throw {
                     code: HttpStatus.Forbidden,
                 };
+            } else if (response.status === HttpStatus.Conflict) {
+                throw {
+                    code: HttpStatus.Conflict,
+                };
             } else {
                 throw {
                     code: HttpStatus.InternalServerError,
