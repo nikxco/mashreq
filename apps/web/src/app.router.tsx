@@ -8,6 +8,7 @@ import SignInPage from "./pages/sign-in/sign-in.page";
 import SignUpPage from "./pages/sign-up/sign-up.page";
 import UsersPage from "./pages/users/users.page";
 import { DefaultCountry } from "./util";
+import NotFoundPage from "./pages/not-found/not-found.page";
 export const getAppRouter = (basename: string = DefaultCountry.basename) => createBrowserRouter([
     {
         path: '/',
@@ -18,7 +19,7 @@ export const getAppRouter = (basename: string = DefaultCountry.basename) => crea
         },
         children: [
             {
-                path: '/',
+                path: '',
                 element: <HomePage />
             }, {
                 path: '/signin',
@@ -41,9 +42,13 @@ export const getAppRouter = (basename: string = DefaultCountry.basename) => crea
                         <UsersPage />
                     </ProtectedRouteComponent>
                 )
+            },
+            {
+                path: '*',
+                element: <NotFoundPage />
             }
         ]
-    }
+    },
 ], {
     basename
 });

@@ -145,7 +145,8 @@ export const basenameToCountry = (basename: string) => {
 export const getBasenameFromPath = (path: string) => {
     const supportedBasenames = getSupportedContries()
         .map(({ basename }) => basename.substring(1, basename.length));
-    const regex = new RegExp(`^\/(${supportedBasenames.join('|')})?`, 'gi');
+    const regex = new RegExp(`^\/(${supportedBasenames.join('|')})?\\b`, 'gi');
+    console.log(regex)
     let match = regex.exec(path);
     return (match && match[0]) || '/';
 }
@@ -187,6 +188,6 @@ export const getPaletteByCountry = (country: Country): { primary?: PaletteColorO
     return { primary }
 }
 
-export const DefaultCountryCode = 'IN';
+export const DefaultCountryCode = 'US';
 
 export const DefaultCountry: Country = getSupportedContries().find((country) => country.code === DefaultCountryCode)!
