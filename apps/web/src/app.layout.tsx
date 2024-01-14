@@ -4,10 +4,16 @@ import { useCookies } from "react-cookie";
 import { NavLink, Outlet } from "react-router-dom";
 import CountrySelectorComponent from "./components/country-selector/country-selector.component";
 import ProfileMenuComponent from "./components/profile-menu/profile-menu.component";
-import SessionProviderComponent from "./providers/session-provider/session-provider.component";
+import SessionProviderComponent, { Session } from "./providers/session-provider/session-provider.component";
+import { Favorite } from "@mui/icons-material";
 const AppLayout = () => {
     const [cookies] = useCookies(['mq-at']);
-    const { data: session } = (cookies["mq-at"] && jwtDecode(cookies["mq-at"])) || {};
+    const accessToken = cookies["mq-at"];
+    const { data: user } = (accessToken && jwtDecode(accessToken)) || {};
+    const session: Session = {
+        user,
+        jwt: accessToken
+    }
     return (
         <SessionProviderComponent session={session}>
             <AppBar component='header' position="sticky">
@@ -21,7 +27,7 @@ const AppLayout = () => {
                         <Box flexGrow={1}></Box>
                         <Stack direction="row" gap={1}>
                             {
-                                !session && (
+                                !user && (
                                     <>
                                         <Button component={NavLink} to="/signin" color="inherit">
                                             Sign in
@@ -33,7 +39,7 @@ const AppLayout = () => {
                                 )
                             }
                             {
-                                !!session && (
+                                !!user && (
                                     <ProfileMenuComponent />
                                 )
                             }
@@ -46,6 +52,12 @@ const AppLayout = () => {
                 <Stack alignItems="center" mt={8} gap={1}>
                     <Typography color="text.secondary" variant="body2">Select your country</Typography>
                     <CountrySelectorComponent />
+                    <Stack direction="row" alignItems="center" gap={0.5} mt={4}>
+                        <Typography>Built with </Typography>
+                        <Favorite color="error" sx={{ fontSize: '18px' }} />
+                        <Typography>for</Typography>
+                        <Typography sx={{ fontWeight: 'bold' }}>Mashreq</Typography>
+                    </Stack>
                 </Stack>
             </Container>
         </SessionProviderComponent>

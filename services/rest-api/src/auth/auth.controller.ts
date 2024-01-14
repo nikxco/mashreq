@@ -1,7 +1,7 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
 import { getDatabaseInstance } from "../database/database.service";
-import { HttpStatus } from "../common/constant.common";
-import { getJwt } from "../common/util.common";
+import { HttpStatus } from "../common/common.constant";
+import { getJwt } from "../common/common.util";
 
 export const SignInController: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -11,7 +11,7 @@ export const SignInController: RequestHandler = async (req: Request, res: Respon
         if (user && user.password === password) {
             const { id, username } = user;
             const accessToken = await getJwt({ id, username }, {
-                expiresIn: 30
+                expiresIn: process.env.SESSION_TIMEOUT
             })
             res.status(HttpStatus.Ok).json({
                 accessToken

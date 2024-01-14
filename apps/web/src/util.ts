@@ -1,7 +1,7 @@
 import { PaletteColorOptions } from "@mui/material";
 import { blue, green, indigo, orange } from "@mui/material/colors";
 import { Country } from "./components/country-selector/country-selector.component";
-import { FetchResponse } from "./type.common";
+import { FetchResponse } from "./common.type";
 import { HttpHeader, HttpStatus } from "./http.contstant";
 
 export const isJSON = (value: any) => {

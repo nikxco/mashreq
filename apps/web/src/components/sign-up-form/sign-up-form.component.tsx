@@ -49,7 +49,6 @@ const SignUpFormComponent = () => {
             });
             navigate('/signin');
         }).catch(({ code }) => {
-            console.log(code);
             if (code === HttpStatus.Conflict) {
                 setError('username', {
                     message: 'Username already exist'

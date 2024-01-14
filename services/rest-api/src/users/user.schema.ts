@@ -1,6 +1,6 @@
 import { lazy, object, ref, string } from "yup";
-import { Country } from "../common/type.common";
-import { getUsernameValidationByCountry } from "../common/schema.common";
+import { Country } from "../common/common.type";
+import { getUsernameValidationByCountry } from "../common/common.schema";
 
 export const getSignUpFormSchema = (country: Country) => object().shape({
     basename: string().required().label('Basename'),

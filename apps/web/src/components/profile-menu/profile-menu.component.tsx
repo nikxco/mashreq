@@ -5,13 +5,15 @@ import { useCookies } from 'react-cookie';
 import { NavLink } from 'react-router-dom';
 import { useSession } from '../../hooks/session.hook';
 import { Session } from '../../providers/session-provider/session-provider.component';
+import { User } from '../../common.type';
 
 const ProfileMenuComponent = () => {
     const session = useSession();
     const [cookies, setCookies, removeCookies] = useCookies();
     const [open, setOpen] = useState(false);
     const [anchorElem, setAnchorElem] = useState<null | HTMLButtonElement>();
-    const { username, id } = session as Session;
+    const { user } = session ?? {} as Session;
+    const { username, id } = user || {} as User;
     const handleOpen = (event: MouseEvent<HTMLButtonElement>) => {
         setAnchorElem(event.currentTarget);
         setOpen(true);

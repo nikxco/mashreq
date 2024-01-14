@@ -1,6 +1,6 @@
 import { Request } from "express";
-import { HttpHeader } from "./constant.common";
-import { Country, ValidationError } from "./type.common";
+import { HttpHeader } from "./common.constant";
+import { Country, ValidationError } from "./common.type";
 import { SignOptions, sign } from "jsonwebtoken";
 import { User } from "../users/user.type";
 
@@ -11,7 +11,7 @@ export const getBearerToken = (req: Request): string | null => {
 };
 
 export const validateEnvVariables = (env: NodeJS.ProcessEnv) => {
-    const { APP_SECRET, API_KEY, ALLOWED_ORIGIN, SERVER_PORT, BASE_PATH } = env;
+    const { APP_SECRET, API_KEY, ALLOWED_ORIGIN, SERVER_PORT, BASE_PATH, SESSION_TIMEOUT } = env;
     let missingVariables = [];
     if (!APP_SECRET) {
         missingVariables.push('APP_SECRET');
@@ -27,6 +27,9 @@ export const validateEnvVariables = (env: NodeJS.ProcessEnv) => {
     }
     if (!BASE_PATH) {
         missingVariables.push('BASE_PATH');
+    }
+    if (!SESSION_TIMEOUT) {
+        missingVariables.push('SESSION_TIMEOUT');
     }
     if (missingVariables.length > 0) {
         console.error(`Environment variables: [${missingVariables.join(', ')}] are missing.`);

@@ -1,15 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import AppLayout from "./app.layout";
+import MustBeUnprotectedRouteComponent from "./components/must-be-unprotected-route/must-be-unprotected-route.component";
 import ProtectedRouteComponent from "./components/protected-route/protected-route.component";
-import { sessionLoader } from "./loaders/session.loader";
 import GlobalErrorPage from "./pages/global-error/global-error.page";
 import HomePage from "./pages/home/home.page";
 import SignInPage from "./pages/sign-in/sign-in.page";
 import SignUpPage from "./pages/sign-up/sign-up.page";
 import UsersPage from "./pages/users/users.page";
-import { usersLoader } from "./loaders/users.loader";
-import MustBeUnprotectedRouteComponent from "./components/must-be-unprotected-route/must-be-unprotected-route.component";
-export const getAppRouter = (basename: string = '/in') => createBrowserRouter([
+import { DefaultCountry } from "./util";
+export const getAppRouter = (basename: string = DefaultCountry.basename) => createBrowserRouter([
     {
         path: '/',
         element: <AppLayout />,
@@ -17,7 +16,6 @@ export const getAppRouter = (basename: string = '/in') => createBrowserRouter([
         action: async (data) => {
             console.log('Action function called', data)
         },
-        loader: sessionLoader,
         children: [
             {
                 path: '/',
@@ -38,7 +36,6 @@ export const getAppRouter = (basename: string = '/in') => createBrowserRouter([
                 )
             }, {
                 path: '/users',
-                loader: usersLoader,
                 element: (
                     <ProtectedRouteComponent>
                         <UsersPage />

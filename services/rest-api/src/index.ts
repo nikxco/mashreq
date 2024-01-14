@@ -1,10 +1,11 @@
+import cors, { CorsOptions } from "cors";
 import 'dotenv/config';
 import express, { Express, Router } from 'express';
-import cors, { CorsOptions } from "cors";
 import AuthRouter from './auth/auth.router';
+import { validateEnvVariables } from './common/common.util';
+import { ApiKeyValidator } from './common/common.validator';
 import UserRouter from './users/user.router';
-import { ApiKeyValidator } from './common/validator.common';
-import { validateEnvVariables } from './common/util.common';
+import { ParseJwtToken } from "./common/common.middleware";
 
 /**
  * Make sure environment variables are set and ready to use.
@@ -40,6 +41,10 @@ console.info(`API mounted on base: ${basePath}`);
  */
 appRouter.use(ApiKeyValidator)
 
+/**
+ * Setting up authenticated user
+ */
+appRouter.use(ParseJwtToken);
 
 /**
  * Add individual routers to app router

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express"
-import { basenameToCountry, toValidationErrorsFromYup } from "../common/util.common";
+import { basenameToCountry, toValidationErrorsFromYup } from "../common/common.util";
 import { getSignUpFormSchema } from "./user.schema";
-import { HttpStatus } from "../common/constant.common";
+import { HttpStatus } from "../common/common.constant";
 import { getDatabaseInstance } from "../database/database.service";
 import { string } from "yup";
 

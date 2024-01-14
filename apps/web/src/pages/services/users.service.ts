@@ -1,5 +1,6 @@
+import { MimeType } from "../../common.constant";
+import { User } from "../../common.type";
 import { HttpHeader } from "../../http.contstant";
-import { MimeType } from "../../type.common";
 import { fromFetch, getApiHeaders } from "../../util";
 
 export const createUser = async (payload: any) => {
@@ -25,6 +26,6 @@ export const getAllUsers = async (
         headers,
     });
 
-    const { body = [] } = await fromFetch<any[]>(fetchRef, 'returnNull');
+    const { body = [] } = await fromFetch<User[]>(fetchRef, 'returnNull');
     return body;
 };

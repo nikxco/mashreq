@@ -23,7 +23,8 @@ function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const path = window.location.pathname
   const basename = `/${path.split('/')[1]}`
-  console.log('basename', basename);
+  initializei18n(basename);
+  // console.log('basename', basename);
   const selectedCountry = basenameToCountry(basename);
   const theme = useMemo(
     () =>
@@ -67,9 +68,6 @@ function App() {
       }),
     [prefersDarkMode, selectedCountry]
   );
-  useEffect(() => {
-    initializei18n(basename);
-  }, [basename])
 
   return (
     <ThemeProvider theme={theme}>

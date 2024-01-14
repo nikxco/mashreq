@@ -1,5 +1,5 @@
 import { string } from "yup";
-import { Country } from "./type.common";
+import { Country } from "./common.type";
 const UAEUsernameSchema = string().required().min(5).matches(/^[a-zA-Z0-9]+$/, {
     message: `Username must be alphanumeric`
 });

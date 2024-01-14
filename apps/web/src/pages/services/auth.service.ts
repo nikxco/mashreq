@@ -1,5 +1,5 @@
+import { MimeType } from "../../common.constant";
 import { HttpHeader } from "../../http.contstant";
-import { MimeType } from "../../type.common";
 import { fromFetch } from "../../util";
 
 export const signIn = async (payload: { username: string, password: string }) => {

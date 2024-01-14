@@ -52,7 +52,7 @@ const SignInFormComponent = () => {
                 message: 'Success!',
                 severity: 'success',
             });
-            navigate('/users');
+            navigate('/');
         }).catch(({ code }) => {
             if (code === HttpStatus.Unauthorized) {
                 setError('username', {

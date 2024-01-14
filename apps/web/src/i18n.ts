@@ -142,7 +142,6 @@ const resources = {
 };
 
 export const initializei18n = (basename: string) => {
-    console.log(basenameToLocale(basename))
     return i18n
         .use(initReactI18next) // passes i18n down to react-i18next
         .init({

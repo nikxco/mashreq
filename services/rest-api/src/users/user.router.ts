@@ -1,6 +1,7 @@
 import express, { Router } from 'express';
 import { CreateUserController, GetUsersController } from './user.controller';
 import { CreateUserValidator, MustHaveBasename, UserMustNotExists } from './user.validator';
+import { AuthRequiredValidator } from '../common/common.validator';
 
 const router: Router = express.Router()
 
@@ -12,6 +13,7 @@ router
         UserMustNotExists,
         CreateUserController
     ).get(
+        AuthRequiredValidator,
         GetUsersController
     )
 

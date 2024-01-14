@@ -1,7 +1,7 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
 import { getDatabaseInstance } from "../database/database.service";
 import { randomUUID } from "crypto";
-import { HttpStatus } from "../common/constant.common";
+import { HttpStatus } from "../common/common.constant";
 
 export const CreateUserController: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
     try {

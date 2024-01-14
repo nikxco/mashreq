@@ -1,7 +1,8 @@
 import { ReactNode, createContext } from 'react';
+import { User } from '../../common.type';
 export type Session = {
-    id: string,
-    username: string
+    user: User,
+    jwt: string
 }
 type Props = {
     session: any,

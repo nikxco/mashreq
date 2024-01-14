@@ -1,8 +1,3 @@
-export type FetchResponse<T> = {
-    body: T;
-    headers: Headers;
-};
-
 export enum MimeType {
     XML = "application/xml",
     JPEG = "image/jpeg",
