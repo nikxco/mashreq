@@ -1,4 +1,4 @@
-import { User } from "../auth/auth.type";
+import { User } from "../users/user.type";
 
 export class MockDatabase {
     private users: User[] = []

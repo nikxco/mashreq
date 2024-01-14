@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { HttpHeader, HttpStatus } from "./constant.common";
 import { getBearerToken } from "./util.common";
 import { verify } from "jsonwebtoken";
-import { User } from "../auth/auth.type";
+import { User } from "../users/user.type";
 
 export const ApiKeyValidator = (
     req: Request,
@@ -12,21 +12,9 @@ export const ApiKeyValidator = (
     try {
         const clientApiKey = req.get(HttpHeader.X_API_KEY) || "";
         const serverApiKey = process.env.API_KEY;
-        const allowedOrigin = process.env.ALLOWED_ORIGIN;
         if (clientApiKey !== serverApiKey) {
             res.status(HttpStatus.Forbidden).send("Forbidden");
         } else {
-            // var origin = req.get("origin");
-            // if (typeof allowedOrigin === "string" && allowedOrigin === "*") {
-            //   next();
-            // } else if (
-            //   Array.isArray(allowedOrigin) &&
-            //   allowedOrigin.findIndex((host: any) => origin === host) >= 0
-            // ) {
-            //   next();
-            // } else {
-            //   res.status(Http.Forbidden).send("Forbidden");
-            // }
             next();
         }
     } catch (err) {

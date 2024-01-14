@@ -1,5 +1,3 @@
-import { UserRole } from "./auth.constant";
-
 export type User = {
     id: string;
     username: string,

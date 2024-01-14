@@ -2,7 +2,7 @@ import { Request } from "express";
 import { HttpHeader } from "./constant.common";
 import { Country, ValidationError } from "./type.common";
 import { SignOptions, sign } from "jsonwebtoken";
-import { User } from "../auth/auth.type";
+import { User } from "../users/user.type";
 
 export const getBearerToken = (req: Request): string | null => {
     let token = req.get(HttpHeader.AUTHORIZATION) || "";
