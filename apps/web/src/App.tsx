@@ -9,7 +9,6 @@ import { CookiesProvider } from 'react-cookie';
 import {
   RouterProvider
 } from "react-router-dom";
-import './app.css';
 import { getAppRouter } from './app.router';
 import { initializei18n } from './i18n';
 import { DefaultCountry, basenameToCountry, getBasenameFromPath, getPaletteByCountry } from './util';
