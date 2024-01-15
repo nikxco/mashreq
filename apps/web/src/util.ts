@@ -146,7 +146,6 @@ export const getBasenameFromPath = (path: string) => {
     const supportedBasenames = getSupportedContries()
         .map(({ basename }) => basename.substring(1, basename.length));
     const regex = new RegExp(`^\/(${supportedBasenames.join('|')})?\\b`, 'gi');
-    console.log(regex)
     let match = regex.exec(path);
     return (match && match[0]) || '/';
 }

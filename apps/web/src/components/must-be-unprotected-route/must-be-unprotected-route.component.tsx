@@ -8,8 +8,7 @@ interface Props {
 }
 const MustBeUnprotectedRouteComponent = ({ redirectPath = '/', children }: Props): any => {
     const session = useSession();
-    const { user } = session ?? {};
-    if (user) {
+    if (session) {
         return <Navigate to={redirectPath} replace />;
     }
     return children;

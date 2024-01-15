@@ -1,11 +1,12 @@
 import cors, { CorsOptions } from "cors";
 import 'dotenv/config';
-import express, { Express, Router } from 'express';
+import express, { Express, NextFunction, Request, Response, Router } from 'express';
 import AuthRouter from './auth/auth.router';
 import { validateEnvVariables } from './common/common.util';
 import { ApiKeyValidator } from './common/common.validator';
 import UserRouter from './users/user.router';
 import { ParseJwtToken } from "./common/common.middleware";
+import { HttpStatus } from "./common/common.constant";
 
 /**
  * Make sure environment variables are set and ready to use.
@@ -52,7 +53,16 @@ appRouter.use(ParseJwtToken);
 appRoutes.push(AuthRouter);
 appRoutes.push(UserRouter);
 
+/**
+ * Global error handler can implemented here
+ */
+appRouter.use((error: any, req: Request, res: Response, next: NextFunction) => {
+    res.status(HttpStatus.InternalServerError).json(error);
+});
 
+/**
+ * Http server initialization
+ */
 app.listen(port, () => {
     appRoutes.forEach((route) => {
         console.log(`Mounting routes: ${route.path}`);

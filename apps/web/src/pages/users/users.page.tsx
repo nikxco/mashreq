@@ -9,6 +9,7 @@ import { User } from '../../common.type';
 import AppSnackbarComponent from '../../components/app-snackbar/app-snackbar.component';
 import { useAppSnackbar } from '../../hooks/app-snackbar.hook';
 import { useSession } from '../../hooks/session.hook';
+import { HttpStatus } from '../../http.contstant';
 import { Session } from '../../providers/session-provider/session-provider.component';
 import { getAllUsers } from '../services/users.service';
 const UsersPage = () => {
@@ -20,14 +21,18 @@ const UsersPage = () => {
     const { state: { open: isSnackbarOpen, message: snackbarMessage, severity: snackbarSeverity }, closeSnackbar, openSnackbar } = useAppSnackbar();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const { t: translate } = useTranslation();
+    const hasUsers = users.length > 0
     useEffect(() => {
         getAllUsers(jwt).then((users) => {
             setUsers(users);
-        }).catch(() => {
+        }).catch(({ code }) => {
             openSnackbar({
                 message: 'Failed to fetch users',
                 severity: 'error'
-            })
+            });
+            if (code === HttpStatus.Unauthorized) {
+                window.location.reload();
+            }
         }).finally(() => {
             setLoading(false);
         })
@@ -46,9 +51,9 @@ const UsersPage = () => {
                     </Typography>
                     <List>
                         {
-                            users.length === 0 && loading && ([1, 2, 3, 4].map(() => {
+                            !hasUsers && loading && ([1, 2, 3, 4].map((value) => {
                                 return (
-                                    <ListItem>
+                                    <ListItem key={`${value}-loader`}>
                                         <ListItemIcon>
                                             <Skeleton variant='circular' sx={{ height: 48, width: 48 }} />
                                         </ListItemIcon>
@@ -60,14 +65,14 @@ const UsersPage = () => {
                             )
                         }
                         {
-                            users.length === 0 && !loading && (
+                            !hasUsers && !loading && (
                                 <ListItem>
                                     <ListItemText primary={translate('usersPage.labels.noUsersFound')} />
                                 </ListItem>
                             )
                         }
                         {
-                            users?.map(({ id, username, createdOn }) => {
+                            hasUsers && users.map(({ id, username, createdOn }) => {
                                 return (
                                     <ListItem key={id}>
                                         <ListItemAvatar>

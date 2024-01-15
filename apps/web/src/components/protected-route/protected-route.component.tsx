@@ -7,8 +7,7 @@ interface Props {
 }
 const ProtectedRouteComponent = ({ redirectPath = '/signin', children }: Props): any => {
     const session = useSession();
-    const { user } = session ?? {};
-    if (!user) {
+    if (!session) {
         return <Navigate to={redirectPath} replace />;
     }
     return children;

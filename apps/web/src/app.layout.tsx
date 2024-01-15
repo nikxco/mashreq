@@ -10,9 +10,13 @@ import { useTranslation } from "react-i18next";
 const AppLayout = () => {
     const [cookies] = useCookies(['mq-at']);
     const accessToken = cookies["mq-at"];
-    const { data: user } = (accessToken && jwtDecode(accessToken)) || {};
+    const { data: user, exp: expiryTime = 0 } = (accessToken && jwtDecode(accessToken)) || {};
+    /**
+     * Converting expiry time to milliseconds
+     */
+    const isExpired = expiryTime * 1000 < Date.now();
     const { t: translate } = useTranslation();
-    const session: Session = {
+    const session: Session | null = isExpired ? null : {
         user,
         jwt: accessToken
     }
@@ -29,7 +33,7 @@ const AppLayout = () => {
                         <Box flexGrow={1}></Box>
                         <Stack direction="row" gap={1}>
                             {
-                                !user && (
+                                !session && (
                                     <>
                                         <Button component={NavLink} to="/signin" color="inherit">
                                             {translate('buttons.signIn')}
@@ -41,7 +45,7 @@ const AppLayout = () => {
                                 )
                             }
                             {
-                                !!user && (
+                                !!session && (
                                     <ProfileMenuComponent />
                                 )
                             }

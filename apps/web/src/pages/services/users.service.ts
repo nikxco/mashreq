@@ -26,6 +26,6 @@ export const getAllUsers = async (
         headers,
     });
 
-    const { body = [] } = await fromFetch<User[]>(fetchRef, 'returnNull');
+    const { body = [] } = await fromFetch<User[]>(fetchRef);
     return body;
 };
