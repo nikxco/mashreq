@@ -7,6 +7,7 @@ import ProfileMenuComponent from "./components/profile-menu/profile-menu.compone
 import SessionProviderComponent, { Session } from "./providers/session-provider/session-provider.component";
 import { Favorite } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
+import ToolbarActionsComponent from "./components/toolbar-actions/toolbar-actions.component";
 const AppLayout = () => {
     const [cookies] = useCookies(['mq-at']);
     const accessToken = cookies["mq-at"];
@@ -34,14 +35,7 @@ const AppLayout = () => {
                         <Stack direction="row" gap={1}>
                             {
                                 !session && (
-                                    <>
-                                        <Button component={NavLink} to="/signin" color="inherit">
-                                            {translate('buttons.signIn')}
-                                        </Button>
-                                        <Button component={NavLink} to="/signup" color="inherit">
-                                            {translate('buttons.signUp')}
-                                        </Button>
-                                    </>
+                                    <ToolbarActionsComponent />
                                 )
                             }
                             {
