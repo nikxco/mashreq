@@ -1,5 +1,11 @@
-import { Avatar, Button, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material"
-import { MouseEvent, useState } from "react"
+import {
+    Avatar, Button, Dialog, DialogActions,
+    DialogContent, DialogTitle, List, ListItemButton,
+    ListItemIcon, ListItemText, Slide, useMediaQuery,
+    useTheme
+} from "@mui/material"
+import { TransitionProps } from "@mui/material/transitions"
+import { MouseEvent, ReactElement, Ref, forwardRef, useState } from "react"
 import { useBasename } from "../../hooks/basename.hook"
 import { DefaultCountryCode, basenameToCountry, countryToBasename, getSupportedContries } from "../../util"
 
@@ -10,22 +16,27 @@ export type Country = {
     basename: string
 }
 
+const Transition = forwardRef(function Transition(
+    props: TransitionProps & {
+        children: ReactElement<any, any>;
+    },
+    ref: Ref<unknown>
+) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
+
 const CountrySelectorComponent = () => {
-    /**
-     * This list can be fetched from an api.
-     */
     const supportedCountries: Country[] = getSupportedContries();
     const [open, setOpen] = useState(false);
-    const [anchorElement, setAnchorElement] = useState<null | HTMLElement>();
     const selectedBasename = useBasename();
-    const selectedCountry = basenameToCountry(selectedBasename)
+    const theme = useTheme();
+    const selectedCountry = basenameToCountry(selectedBasename);
+    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const onOpen = (event: MouseEvent<HTMLButtonElement>) => {
-        setAnchorElement(event.currentTarget);
         setOpen(true);
     }
     const onClose = () => {
         setOpen(false);
-        setAnchorElement(null);
     }
     const onSelect = (country: Country) => {
         onClose();
@@ -53,27 +64,32 @@ const CountrySelectorComponent = () => {
                     selectedCountry.name
                 }
             </Button>
-            <Menu
-                key="country-selector"
-                anchorEl={anchorElement}
-                open={open}
-                onClose={onClose}
-            >
-                {
-                    supportedCountries.map((country) => {
-                        const { code, name } = country
-                        const label = name;
-                        return (
-                            <MenuItem onClick={() => onSelect(country)} key={code} selected={isSelected(country)}>
-                                <ListItemIcon>
-                                    {renderFlagIcon(country)}
-                                </ListItemIcon>
-                                <ListItemText primary={label} />
-                            </MenuItem>
-                        )
-                    })
-                }
-            </Menu>
+            <Dialog open={open} onClose={onClose} TransitionComponent={Transition} fullWidth maxWidth="xs" fullScreen={fullScreen}>
+                <DialogTitle>
+                    Select your country
+                </DialogTitle>
+                <DialogContent>
+                    <List>
+                        {
+                            supportedCountries.map((country) => {
+                                const { code, name } = country
+                                const label = name;
+                                return (
+                                    <ListItemButton onClick={() => onSelect(country)} key={code} selected={isSelected(country)}>
+                                        <ListItemIcon>
+                                            {renderFlagIcon(country)}
+                                        </ListItemIcon>
+                                        <ListItemText primary={label} />
+                                    </ListItemButton>
+                                )
+                            })
+                        }
+                    </List>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={onClose} color="inherit">Close</Button>
+                </DialogActions>
+            </Dialog>
         </>
     )
 }
