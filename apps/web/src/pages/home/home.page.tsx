@@ -16,7 +16,7 @@ const HomePage = () => {
     }, [])
     return (
         <Stack alignItems="center" gap={4}>
-            <Avatar sx={{ width: 96, height: 96 }} variant="rounded" src="./logo.png" />
+            <Avatar sx={{ width: 96, height: 96 }} variant="rounded" src="logo.png" />
             <Stack alignItems="center" gap={2}>
                 <Typography variant='h3' textAlign="center">{translate('homePage.labels.onlineBankingSolution')}</Typography>
             </Stack>

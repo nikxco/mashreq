@@ -21,7 +21,7 @@ const AppLayout = () => {
             <AppBar component='header' position="sticky">
                 <Toolbar>
                     <Stack sx={{ width: '100%' }} direction="row" gap={2} alignItems="center">
-                        <Avatar to="/" component={NavLink} variant="rounded" src="./logo.png" />
+                        <Avatar to="/" component={NavLink} variant="rounded" src="logo.png" />
                         <Stack gap={0}>
                             <Typography variant="h6">{translate('brandName')}</Typography>
                             <Typography variant="caption" mt={-0.5} color="text.secondary">{translate('appBar.onlineBanking')}</Typography>
