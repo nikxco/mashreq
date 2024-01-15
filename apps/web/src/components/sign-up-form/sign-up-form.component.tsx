@@ -63,7 +63,7 @@ const SignUpFormComponent = () => {
     }
     return (
         <Container maxWidth="xs">
-            <Card variant={isMobile ? 'flat' : 'elevation'}>
+            <Card variant={isMobile ? 'flat' : 'outlined'}>
                 <CardHeader
                     title={<Typography variant='h4'>{translate('signUpPage.form.title')}</Typography>}
                 />

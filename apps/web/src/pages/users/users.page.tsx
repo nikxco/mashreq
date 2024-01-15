@@ -42,7 +42,7 @@ const UsersPage = () => {
     }, [])
     return (
         <>
-            <Card variant={isMobile ? 'flat' : 'elevation'}>
+            <Card variant={isMobile ? 'flat' : 'outlined'}>
                 <CardContent>
                     <Typography variant="h4" mx={2}>
                         {
