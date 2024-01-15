@@ -1,7 +1,7 @@
-import { MimeType } from "../../common.constant";
-import { User } from "../../common.type";
-import { HttpHeader } from "../../http.contstant";
-import { fromFetch, getApiHeaders } from "../../util";
+import { MimeType } from "../common.constant";
+import { User } from "../common.type";
+import { HttpHeader } from "../http.contstant";
+import { fromFetch, getApiHeaders } from "../util";
 
 export const createUser = async (payload: any) => {
     const endpoint = 'http://localhost:3002/v1/users';

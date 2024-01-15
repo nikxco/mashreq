@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppSnackbar } from "../../hooks/app-snackbar.hook";
 import { useBasename } from "../../hooks/basename.hook";
-import { createUser } from "../../pages/services/users.service";
+import { createUser } from "../../services/users.service";
 import { basenameToCountry } from "../../util";
 import AppSnackbarComponent from "../app-snackbar/app-snackbar.component";
 import { getSignUpFormSchema } from "./schema";

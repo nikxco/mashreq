@@ -11,7 +11,7 @@ import { useAppSnackbar } from '../../hooks/app-snackbar.hook';
 import { useSession } from '../../hooks/session.hook';
 import { HttpStatus } from '../../http.contstant';
 import { Session } from '../../providers/session-provider/session-provider.component';
-import { getAllUsers } from '../services/users.service';
+import { getAllUsers } from '../../services/users.service';
 const UsersPage = () => {
     const theme = useTheme();
     const session = useSession();

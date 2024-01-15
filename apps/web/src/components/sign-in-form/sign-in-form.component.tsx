@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppSnackbar } from "../../hooks/app-snackbar.hook";
 import { HttpStatus } from "../../http.contstant";
-import { signIn } from "../../pages/services/auth.service";
+import { signIn } from "../../services/auth.service";
 import AppSnackbarComponent from "../app-snackbar/app-snackbar.component";
 import { getSgnInFormSchema } from "./schema";
 const SignInFormComponent = () => {
