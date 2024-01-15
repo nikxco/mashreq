@@ -1,0 +1,105 @@
+{
+    "translation": {
+        "brandName": "mashreq",
+        "appBar": {
+            "onlineBanking": "Online Banking"
+        },
+        "buttons": {
+            "create": "Create",
+            "createAccount": "Create account?",
+            "signInInstead": "Sign in instead?",
+            "signIn": "Sign in",
+            "signUp": "Sign up",
+            "signOut": "Sign out",
+            "goHome": "Go home",
+            "reload": "Reload"
+        },
+        "tooltips": {
+            "hidePassword": "Hide password",
+            "showPassword": "Show password"
+        },
+        "labels": {
+            "selectYourCountry": "Select your country",
+            "welcome": "Welcome",
+            "allUsers": "All users"
+        },
+        "signInPage": {
+            "title": "Sign In | Mashreq Online Banking",
+            "form": {
+                "title": "Sign in",
+                "inputs": {
+                    "username": {
+                        "label": "Username",
+                        "placeholder": "Enter your username"
+                    },
+                    "password": {
+                        "label": "Password",
+                        "placeholder": "Password"
+                    }
+                },
+                "buttons": {
+                    "signIn": "Sign in"
+                },
+                "tooltips": {
+                    "hidePassword": "Hide password",
+                    "showPassword": "Show password"
+                },
+                "termsLabel": "By sign in, you agree to our Terms of Use, and  Privacy Policy. If you need help with your account, please contact us."
+            }
+        },
+        "signUpPage": {
+            "title": "Sign up | Mashreq Online Banking",
+            "form": {
+                "title": "Sign up",
+                "inputs": {
+                    "username": {
+                        "label": "Username",
+                        "placeholder": "Enter your username"
+                    },
+                    "password": {
+                        "label": "Password",
+                        "placeholder": "Password"
+                    },
+                    "confirmPassword": {
+                        "label": "Confirm Password",
+                        "placeholder": "Confirm Password"
+                    }
+                },
+                "termsLabel": "By sign up, you agree to our Terms of Use, and  Privacy Policy. If you need help with your account, please contact us."
+            }
+        },
+        "homePage": {
+            "title": "Home | Mashreq Online Banking",
+            "labels": {
+                "onlineBankingSolution": "Online Banking Solution"
+            }
+        },
+        "usersPage": {
+            "title": "Users | Mashreq Online Banking",
+            "labels": {
+                "users": "Users",
+                "createdOn": "Created On",
+                "noUsersFound": "No users found"
+            }
+        },
+        "notFoundPage": {
+            "title": "Not found",
+            "labels": {
+                "notFound": "Not found"
+            }
+        },
+        "globalErrorPage": {
+            "title": "Error",
+            "labels": {
+                "notFound": "Not found",
+                "ooops": "Ooops!",
+                "somethingWentWrong": "Something went wrong"
+            },
+            "message": "We are working hard to fix the issue, plese check back in sometime."
+        },
+        "footer": {
+            "builtWith": "Built with",
+            "for": "for"
+        }
+    }
+}

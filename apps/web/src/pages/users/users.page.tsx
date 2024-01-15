@@ -1,12 +1,16 @@
-import { Avatar, Card, CardContent, List, ListItem, ListItemAvatar, ListItemIcon, ListItemText, Skeleton, Typography, useMediaQuery, useTheme } from '@mui/material';
+import {
+    Avatar, Card, CardContent, List, ListItem,
+    ListItemAvatar, ListItemIcon, ListItemText,
+    Skeleton, Typography, useMediaQuery, useTheme
+} from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { User } from '../../common.type';
+import AppSnackbarComponent from '../../components/app-snackbar/app-snackbar.component';
+import { useAppSnackbar } from '../../hooks/app-snackbar.hook';
 import { useSession } from '../../hooks/session.hook';
 import { Session } from '../../providers/session-provider/session-provider.component';
 import { getAllUsers } from '../services/users.service';
-import AppSnackbarComponent from '../../components/app-snackbar/app-snackbar.component';
-import { useAppSnackbar } from '../../hooks/app-snackbar.hook';
 const UsersPage = () => {
     const theme = useTheme();
     const session = useSession();
@@ -28,13 +32,16 @@ const UsersPage = () => {
             setLoading(false);
         })
     }, [jwt])
+    useEffect(() => {
+        document.title = translate('usersPage.title');
+    }, [])
     return (
         <>
             <Card variant={isMobile ? 'flat' : 'elevation'}>
                 <CardContent>
                     <Typography variant="h4" mx={2}>
                         {
-                            translate('usersPage.pageTitle')
+                            translate('usersPage.labels.users')
                         }
                     </Typography>
                     <List>
@@ -55,7 +62,7 @@ const UsersPage = () => {
                         {
                             users.length === 0 && !loading && (
                                 <ListItem>
-                                    <ListItemText primary="No users found" />
+                                    <ListItemText primary={translate('usersPage.labels.noUsersFound')} />
                                 </ListItem>
                             )
                         }
@@ -64,9 +71,9 @@ const UsersPage = () => {
                                 return (
                                     <ListItem key={id}>
                                         <ListItemAvatar>
-                                            <Avatar src={`https://api.multiavatar.com/${id}.png`}>N</Avatar>
+                                            <Avatar src={`https://api.multiavatar.com/${id}.png`}></Avatar>
                                         </ListItemAvatar>
-                                        <ListItemText primary={username} secondary={`Created On: ${new Date(createdOn!).toLocaleDateString()}`} />
+                                        <ListItemText primary={username} secondary={`${translate('usersPage.labels.createdOn')}: ${new Date(createdOn!).toLocaleDateString()}`} />
                                     </ListItem>
 
                                 )

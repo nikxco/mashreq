@@ -8,6 +8,7 @@ import { TransitionProps } from "@mui/material/transitions"
 import { MouseEvent, ReactElement, Ref, forwardRef, useState } from "react"
 import { useBasename } from "../../hooks/basename.hook"
 import { DefaultCountryCode, basenameToCountry, countryToBasename, getSupportedContries } from "../../util"
+import { useTranslation } from "react-i18next"
 
 export type Country = {
     code: string,
@@ -32,6 +33,7 @@ const CountrySelectorComponent = () => {
     const theme = useTheme();
     const selectedCountry = basenameToCountry(selectedBasename);
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const { t: translate } = useTranslation();
     const onOpen = (event: MouseEvent<HTMLButtonElement>) => {
         setOpen(true);
     }
@@ -66,7 +68,7 @@ const CountrySelectorComponent = () => {
             </Button>
             <Dialog open={open} onClose={onClose} TransitionComponent={Transition} fullWidth maxWidth="xs" fullScreen={fullScreen}>
                 <DialogTitle>
-                    Select your country
+                    {translate('labels.selectYourCountry')}
                 </DialogTitle>
                 <DialogContent>
                     <List>

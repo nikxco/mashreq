@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { useSession } from '../../hooks/session.hook';
 import { Session } from '../../providers/session-provider/session-provider.component';
 import { User } from '../../common.type';
+import { useTranslation } from 'react-i18next';
 
 const ProfileMenuComponent = () => {
     const session = useSession();
@@ -14,6 +15,7 @@ const ProfileMenuComponent = () => {
     const [anchorElem, setAnchorElem] = useState<null | HTMLButtonElement>();
     const { user } = session ?? {} as Session;
     const { username, id } = user || {} as User;
+    const { t: translate } = useTranslation();
     const handleOpen = (event: MouseEvent<HTMLButtonElement>) => {
         setAnchorElem(event.currentTarget);
         setOpen(true);
@@ -34,13 +36,13 @@ const ProfileMenuComponent = () => {
                 <ListItemIcon>
                     <ListAltOutlined />
                 </ListItemIcon>
-                <ListItemText primary="All Users" />
+                <ListItemText primary={translate('labels.allUsers')} />
             </MenuItem>
             <MenuItem onClick={onSignOut}>
                 <ListItemIcon>
                     <LogoutOutlined />
                 </ListItemIcon>
-                <ListItemText primary="Sign out" />
+                <ListItemText primary={translate('buttons.signOut')} />
             </MenuItem>
         </Menu>
     )

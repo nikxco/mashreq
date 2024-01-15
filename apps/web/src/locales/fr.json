@@ -1,0 +1,105 @@
+{
+    "translation": {
+        "brandName": "mashreq",
+        "appBar": {
+            "onlineBanking": "Banque en ligne"
+        },
+        "buttons": {
+            "create": "Créer",
+            "createAccount": "Créer un compte ?",
+            "signInInstead": "Se connecter plutôt ?",
+            "signIn": "Se connecter",
+            "signUp": "S'inscrire",
+            "signOut": "Se déconnecter",
+            "goHome": "Accueil",
+            "reload": "Recharger"
+        },
+        "tooltips": {
+            "hidePassword": "Masquer le mot de passe",
+            "showPassword": "Afficher le mot de passe"
+        },
+        "labels": {
+            "selectYourCountry": "Sélectionnez votre pays",
+            "welcome": "Bienvenue",
+            "allUsers": "Tous les utilisateurs"
+        },
+        "signInPage": {
+            "title": "Se connecter | Banque en ligne Mashreq",
+            "form": {
+                "title": "Se connecter",
+                "inputs": {
+                    "username": {
+                        "label": "Nom d'utilisateur",
+                        "placeholder": "Entrez votre nom d'utilisateur"
+                    },
+                    "password": {
+                        "label": "Mot de passe",
+                        "placeholder": "Mot de passe"
+                    }
+                },
+                "buttons": {
+                    "signIn": "Se connecter"
+                },
+                "tooltips": {
+                    "hidePassword": "Masquer le mot de passe",
+                    "showPassword": "Afficher le mot de passe"
+                },
+                "termsLabel": "En vous connectant, vous acceptez nos conditions d'utilisation et notre politique de confidentialité. Si vous avez besoin d'aide avec votre compte, veuillez nous contacter."
+            }
+        },
+        "signUpPage": {
+            "title": "S'inscrire | Banque en ligne Mashreq",
+            "form": {
+                "title": "S'inscrire",
+                "inputs": {
+                    "username": {
+                        "label": "Nom d'utilisateur",
+                        "placeholder": "Entrez votre nom d'utilisateur"
+                    },
+                    "password": {
+                        "label": "Mot de passe",
+                        "placeholder": "Mot de passe"
+                    },
+                    "confirmPassword": {
+                        "label": "Confirmer le mot de passe",
+                        "placeholder": "Confirmer le mot de passe"
+                    }
+                },
+                "termsLabel": "En vous inscrivant, vous acceptez nos conditions d'utilisation et notre politique de confidentialité. Si vous avez besoin d'aide avec votre compte, veuillez nous contacter."
+            }
+        },
+        "homePage": {
+            "title": "Accueil | Banque en ligne Mashreq",
+            "labels": {
+                "onlineBankingSolution": "Solution de banque en ligne"
+            }
+        },
+        "usersPage": {
+            "title": "Utilisateurs | Banque en ligne Mashreq",
+            "labels": {
+                "users": "Utilisateurs",
+                "createdOn": "Créé le",
+                "noUsersFound": "Aucun utilisateur trouvé"
+            }
+        },
+        "notFoundPage": {
+            "title": "Non trouvé",
+            "labels": {
+                "notFound": "Non trouvé"
+            }
+        },
+        "globalErrorPage": {
+            "title": "Erreur",
+            "labels": {
+                "notFound": "Non trouvé",
+                "ooops": "Ooops !",
+                "somethingWentWrong": "Quelque chose s'est mal passé"
+            },
+            "message": "Nous travaillons dur pour résoudre le problème, veuillez revenir dans un certain temps."
+        },
+        "footer": {
+            "builtWith": "Construit avec",
+            "for": "pour"
+        }
+    }
+}

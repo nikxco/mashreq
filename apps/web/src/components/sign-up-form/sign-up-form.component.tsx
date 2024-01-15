@@ -96,7 +96,7 @@ const SignUpFormComponent = () => {
                                     {
                                         endAdornment: (
                                             <InputAdornment position="end">
-                                                <Tooltip title={translate(passwordVisible ? 'signUpPage.form.tooltips.hidePassword' : 'signUpPage.form.tooltips.showPassword')}>
+                                                <Tooltip title={translate(passwordVisible ? 'tooltips.hidePassword' : 'tooltips.showPassword')}>
                                                     <IconButton onClick={() => togglePasswordVisibility()} disabled={isSubmitting}>
                                                         {
                                                             passwordVisible ? <VisibilityOffOutlined /> : <VisibilityOutlined />
@@ -130,10 +130,10 @@ const SignUpFormComponent = () => {
                                     variant="contained"
                                     disableElevation
                                 >
-                                    {translate('signUpPage.form.buttons.create')}
+                                    {translate('buttons.create')}
                                 </LoadingButton>
                                 <Button component={NavLink} to="/signin" variant='text' color="inherit">
-                                    {translate('signUpPage.form.buttons.signIn')}
+                                    {translate('buttons.signInInstead')}
                                 </Button>
                             </Stack>
                         </Stack>

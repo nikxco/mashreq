@@ -1,0 +1,105 @@
+{
+    "translation": {
+        "brandName": "مشرق",
+        "appBar": {
+            "onlineBanking": "الخدمات المصرفية عبر الإنترنت"
+        },
+        "buttons": {
+            "create": "إنشاء",
+            "createAccount": "إنشاء حساب؟",
+            "signInInstead": "تسجيل الدخول بدلاً من ذلك؟",
+            "signIn": "تسجيل الدخول",
+            "signUp": "التسجيل",
+            "signOut": "تسجيل الخروج",
+            "goHome": "العودة إلى الصفحة الرئيسية",
+            "reload": "إعادة تحميل"
+        },
+        "tooltips": {
+            "hidePassword": "إخفاء كلمة المرور",
+            "showPassword": "عرض كلمة المرور"
+        },
+        "labels": {
+            "selectYourCountry": "اختر بلدك",
+            "welcome": "مرحبًا",
+            "allUsers": "جميع المستخدمين"
+        },
+        "signInPage": {
+            "title": "تسجيل الدخول | خدمات البنك عبر الإنترنت في مشرق",
+            "form": {
+                "title": "تسجيل الدخول",
+                "inputs": {
+                    "username": {
+                        "label": "اسم المستخدم",
+                        "placeholder": "أدخل اسم المستخدم"
+                    },
+                    "password": {
+                        "label": "كلمة المرور",
+                        "placeholder": "كلمة المرور"
+                    }
+                },
+                "buttons": {
+                    "signIn": "تسجيل الدخول"
+                },
+                "tooltips": {
+                    "hidePassword": "إخفاء كلمة المرور",
+                    "showPassword": "عرض كلمة المرور"
+                },
+                "termsLabel": "عند تسجيل الدخول، فإنك توافق على شروط الاستخدام وسياسة الخصوصية لدينا. إذا كنت بحاجة إلى مساعدة في حسابك، يرجى الاتصال بنا."
+            }
+        },
+        "signUpPage": {
+            "title": "التسجيل | خدمات البنك عبر الإنترنت في مشرق",
+            "form": {
+                "title": "التسجيل",
+                "inputs": {
+                    "username": {
+                        "label": "اسم المستخدم",
+                        "placeholder": "أدخل اسم المستخدم"
+                    },
+                    "password": {
+                        "label": "كلمة المرور",
+                        "placeholder": "كلمة المرور"
+                    },
+                    "confirmPassword": {
+                        "label": "تأكيد كلمة المرور",
+                        "placeholder": "تأكيد كلمة المرور"
+                    }
+                },
+                "termsLabel": "عند التسجيل، فإنك توافق على شروط الاستخدام وسياسة الخصوصية لدينا. إذا كنت بحاجة إلى مساعدة في حسابك، يرجى الاتصال بنا."
+            }
+        },
+        "homePage": {
+            "title": "الرئيسية | خدمات البنك عبر الإنترنت في مشرق",
+            "labels": {
+                "onlineBankingSolution": "حلاً للخدمات المصرفية عبر الإنترنت"
+            }
+        },
+        "usersPage": {
+            "title": "المستخدمون | خدمات البنك عبر الإنترنت في مشرق",
+            "labels": {
+                "users": "المستخدمون",
+                "createdOn": "تم الإنشاء في",
+                "noUsersFound": "لم يتم العثور على مستخدمين"
+            }
+        },
+        "notFoundPage": {
+            "title": "غير موجود",
+            "labels": {
+                "notFound": "غير موجود"
+            }
+        },
+        "globalErrorPage": {
+            "title": "خطأ",
+            "labels": {
+                "notFound": "غير موجود",
+                "ooops": "عفوًا!",
+                "somethingWentWrong": "حدث خطأ ما"
+            },
+            "message": "نعمل بجد لإصلاح المشكلة، يرجى التحقق مرة أخرى في وقت لاحق."
+        },
+        "footer": {
+            "builtWith": "بنيت باستخدام",
+            "for": "لصالح"
+        }
+    }
+}

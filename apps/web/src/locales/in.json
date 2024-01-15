@@ -1,0 +1,105 @@
+{
+    "translation": {
+        "brandName": "मशरेक",
+        "appBar": {
+            "onlineBanking": "ऑनलाइन बैंकिंग"
+        },
+        "buttons": {
+            "create": "बनाएं",
+            "createAccount": "खाता बनाएं?",
+            "signInInstead": "इसके बजाय साइन इन करें?",
+            "signIn": "साइन इन करें",
+            "signUp": "साइन अप करें",
+            "signOut": "साइन आउट करें",
+            "goHome": "घर जाएं",
+            "reload": "रीलोड करें"
+        },
+        "tooltips": {
+            "hidePassword": "पासवर्ड छुपाएं",
+            "showPassword": "पासवर्ड दिखाएं"
+        },
+        "labels": {
+            "selectYourCountry": "अपना देश चुनें",
+            "welcome": "स्वागत है",
+            "allUsers": "सभी उपयोगकर्ता"
+        },
+        "signInPage": {
+            "title": "साइन इन | मशरेक ऑनलाइन बैंकिंग",
+            "form": {
+                "title": "साइन इन",
+                "inputs": {
+                    "username": {
+                        "label": "उपयोगकर्ता नाम",
+                        "placeholder": "अपना उपयोगकर्ता नाम दर्ज करें"
+                    },
+                    "password": {
+                        "label": "पासवर्ड",
+                        "placeholder": "पासवर्ड"
+                    }
+                },
+                "buttons": {
+                    "signIn": "साइन इन करें"
+                },
+                "tooltips": {
+                    "hidePassword": "पासवर्ड छुपाएं",
+                    "showPassword": "पासवर्ड दिखाएं"
+                },
+                "termsLabel": "साइन इन करके, आप हमारे उपयोग की शर्तों और गोपनीयता नीति से सहमत होते हैं। यदि आप अपने खाते में मदद चाहते हैं, तो कृपया हमसे संपर्क करें।"
+            }
+        },
+        "signUpPage": {
+            "title": "साइन अप | मशरेक ऑनलाइन बैंकिंग",
+            "form": {
+                "title": "साइन अप",
+                "inputs": {
+                    "username": {
+                        "label": "उपयोगकर्ता नाम",
+                        "placeholder": "अपना उपयोगकर्ता नाम दर्ज करें"
+                    },
+                    "password": {
+                        "label": "पासवर्ड",
+                        "placeholder": "पासवर्ड"
+                    },
+                    "confirmPassword": {
+                        "label": "पासवर्ड की पुष्टि करें",
+                        "placeholder": "पासवर्ड की पुष्टि करें"
+                    }
+                },
+                "termsLabel": "साइन अप करके, आप हमारे उपयोग की शर्तों और गोपनीयता नीति से सहमत होते हैं। यदि आप अपने खाते में मदद चाहते हैं, तो कृपया हमसे संपर्क करें।"
+            }
+        },
+        "homePage": {
+            "title": "होम | मशरेक ऑनलाइन बैंकिंग",
+            "labels": {
+                "onlineBankingSolution": "ऑनलाइन बैंकिंग समाधान"
+            }
+        },
+        "usersPage": {
+            "title": "उपयोगकर्ता | मशरेक ऑनलाइन बैंकिंग",
+            "labels": {
+                "users": "उपयोगकर्ता",
+                "createdOn": "बनाया गया",
+                "noUsersFound": "कोई उपयोगकर्ता नहीं मिला"
+            }
+        },
+        "notFoundPage": {
+            "title": "नहीं मिला",
+            "labels": {
+                "notFound": "नहीं मिला"
+            }
+        },
+        "globalErrorPage": {
+            "title": "त्रुटि",
+            "labels": {
+                "notFound": "नहीं मिला",
+                "ooops": "ऊप्स!",
+                "somethingWentWrong": "कुछ गलत हो गया है"
+            },
+            "message": "हम कड़ी मेहनत कर रहे हैं ताकि समस्या को ठीक किया जा सके, कृपया कुछ समय बाद देखें।"
+        },
+        "footer": {
+            "builtWith": "के साथ बनाया गया",
+            "for": "के लिए"
+        }
+    }
+}
