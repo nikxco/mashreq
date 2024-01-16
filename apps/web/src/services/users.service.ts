@@ -1,7 +1,7 @@
 import { MimeType } from "../common.constant";
 import { User } from "../common.type";
 import { HttpHeader } from "../http.contstant";
-import { fromFetch, getApiBaseUrl, getApiHeaders } from "../util";
+import { fromFetch, getApiBaseUrl, getApiHeaders, getApiKey } from "../util";
 
 export const createUser = async (payload: any) => {
     const apiBaseUrl = getApiBaseUrl();
@@ -10,7 +10,7 @@ export const createUser = async (payload: any) => {
         method: "PUT",
         headers: {
             [HttpHeader.CONTENT_TYPE]: MimeType.JSON,
-            [HttpHeader.X_API_KEY]: 'tcgxjUQBuISPRrDuyMJ1xBaIrT6rmtD7',
+            [HttpHeader.X_API_KEY]: getApiKey(),
         },
         body: JSON.stringify(payload),
     });

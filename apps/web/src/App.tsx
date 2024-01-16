@@ -22,6 +22,11 @@ function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const path = window.location.pathname
   const basename = getBasenameFromPath(path);
+
+  /**
+   * Removes basename from the url path if the 
+   * basename belongs to the default country.
+   */
   if (basename === DefaultCountry.basename) {
     const newPath = `${window.location.origin}${path.substring(basename.length, path.length)}`;
     window.location.replace(newPath)

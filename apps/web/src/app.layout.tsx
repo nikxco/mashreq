@@ -31,16 +31,33 @@ const AppLayout = () => {
         user,
         jwt: accessToken
     }
+
+    /**
+     * Push notification implementation.
+     * This must be at initialized at app level 
+     * in order to receive push notifications.
+     */
     useEffect(() => {
         if (isPushNotificationsAvailable) {
-            // Request permission to use push notifications
-            // iOS will prompt user and return if they granted permission or not
-            // Android will just grant without prompting
+            /**
+             * Request permission to use push notifications
+             * /
+
+            / * 
+             * Notes: 
+             * iOS will prompt user and return if they granted permission or not
+             * Android will just grant without prompting
+             */
             PushNotifications.requestPermissions().then(result => {
                 if (result.receive === 'granted') {
-                    // Register with Apple / Google to receive push via FCM (Firebase Cloud Messaging)
+                    /**
+                     * Register with Apple / Google to receive push 
+                     * via FCM (Firebase Cloud Messaging)
+                     */
                 } else {
-                    // Show some error
+                    /**
+                     * Show some error or request permission again.
+                     */
                 }
             });
 

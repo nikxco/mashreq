@@ -4,6 +4,12 @@ import { Country } from "./components/country-selector/country-selector.componen
 import { FetchResponse } from "./common.type";
 import { HttpHeader, HttpStatus } from "./http.contstant";
 
+/**
+ * It is a utility method that checks if a given 
+ * value is a valid json or not.
+ * @param value 
+ * @returns {boolean}
+ */
 export const isJSON = (value: any) => {
     try {
         JSON.parse(value);
@@ -13,6 +19,17 @@ export const isJSON = (value: any) => {
     }
 };
 
+/**
+ * A fetch() promise only rejects when a network error is encountered.
+ * A fetch() promise does not reject on HTTP errors (404, etc.). 
+ * In order to handle HTTP error codes this method is used.
+ * 
+ * @param response 
+ * 
+ * Should it fail on errors or return null without throwing error, default to "throw"
+ * @param onError 
+ * @returns 
+ */
 export const handleHttpErrors = (
     response: Response,
     onError?: "throw" | "returnNull"
@@ -51,6 +68,12 @@ export const handleHttpErrors = (
     }
 };
 
+/**
+ * A utility method to extract 'body' and 'headers' from the response.
+ * @param fetchRef 
+ * @param onError 
+ * @returns {Promise<FetchResponse<T>>}
+ */
 export const fromFetch = async <T>(
     fetchRef: Promise<Response>,
     onError: "throw" | "returnNull" = "throw"
@@ -92,6 +115,10 @@ export const fromFetch = async <T>(
     });
 };
 
+/**
+ * List of supported countries can be configured here
+ * @returns {Country[]}
+ */
 export const getSupportedContries = (): Country[] => {
     return [
         {
@@ -121,9 +148,15 @@ export const getSupportedContries = (): Country[] => {
     ]
 }
 
+/**
+ * It is used to get default https headers required to call the REST api.
+ * Optionally it will add Authorization header also if the access token is provided.
+ * @param token 
+ * @returns {HeadersInit}
+ */
 export const getApiHeaders = (token?: string | null): HeadersInit => {
-    let headers: any = {
-        [HttpHeader.X_API_KEY]: 'tcgxjUQBuISPRrDuyMJ1xBaIrT6rmtD7',
+    let headers: HeadersInit = {
+        [HttpHeader.X_API_KEY]: getApiKey(),
     };
     if (token) {
         headers[HttpHeader.AUTHORIZATION] = `Bearer ${token}`;
@@ -131,10 +164,21 @@ export const getApiHeaders = (token?: string | null): HeadersInit => {
     return headers;
 };
 
+/**
+ * It is used to get associated basename with the given country.
+ * @param country 
+ * @returns {string}
+ */
 export const countryToBasename = (country: Country) => {
     return country.basename;
 }
 
+/**
+ * It is used to conver basename to associated country.
+ * If basename is '/' then it return the default country
+ * @param basename 
+ * @returns {Country}
+ */
 export const basenameToCountry = (basename: string) => {
     if (basename === '/') {
         return DefaultCountry;
@@ -142,6 +186,12 @@ export const basenameToCountry = (basename: string) => {
     return getSupportedContries().find((country) => country.basename === basename)!;
 }
 
+/**
+ * It uses dynamically generated regex from the list of 
+ * supported countries to extract basename.
+ * @param path 
+ * @returns {string}
+ */
 export const getBasenameFromPath = (path: string) => {
     const supportedBasenames = getSupportedContries()
         .map(({ basename }) => basename.substring(1, basename.length));
@@ -150,10 +200,22 @@ export const getBasenameFromPath = (path: string) => {
     return (match && match[0]) || '/';
 }
 
+/**
+ * It is used to fetch the locale value associated with a given basename/country
+ * @param basename 
+ * @returns {string}
+ */
 export const basenameToLocale = (basename: string) => {
     return basenameToCountry(basename)?.locale;
 }
 
+/**
+ * It is used provide to country specific theming.
+ * This can be extended even further to supported different 
+ * component level theming as well.
+ * @param country 
+ * @returns {{ primary?: PaletteColorOptions, secondary?: PaletteColorOptions }}
+ */
 export const getPaletteByCountry = (country: Country): { primary?: PaletteColorOptions, secondary?: PaletteColorOptions } => {
     let primary: PaletteColorOptions | undefined;
     const { code, name } = country;
@@ -187,15 +249,39 @@ export const getPaletteByCountry = (country: Country): { primary?: PaletteColorO
     return { primary }
 }
 
+/**
+ * Add ISO 3166-1 alpha 2 code for the default country
+ * https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
+ * Note:
+ * Country must be present in the supported country list
+ */
 export const DefaultCountryCode = 'US';
-
 export const DefaultCountry: Country = getSupportedContries().find((country) => country.code === DefaultCountryCode)!
 
+/**
+ * It is used to get api host based on "production" or "development" environment.
+ * '.env.production' and '.env.development' files contain environment 
+ * variables used during the build/development.
+ * @returns {string}
+ */
 export const getApiBaseUrl = () => {
     let baseUrl = process.env.REACT_APP_API_URI;
     if (!baseUrl) {
         throw Error('REACT_APP_API_URI is not available')
     }
     return baseUrl;
+
+}
+
+/**
+ * Returns Api Key which is used for making REST api calls.
+ * @returns {string}
+ */
+export const getApiKey = () => {
+    let apiKey = process.env.REACT_APP_API_KEY;
+    if (!apiKey) {
+        throw Error('REACT_APP_API_KEY is not available')
+    }
+    return apiKey;
 
 }
