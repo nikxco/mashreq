@@ -14,7 +14,6 @@ All apps supports 4 locales (Arabic, English, French, and Hindi) based on select
 
 **United States of America (English locale)** is default selection.
 
-![Web Dark Mode](./screenshots/web/Dark%20Mode/screencapture-localhost-3000-2024-01-16-20_00_48.png)
 
 ## Setup Instructions
 
