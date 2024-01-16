@@ -9,7 +9,10 @@
   ],
   "scripts": {
     "start:web": "npm --prefix ./apps/web run start",
-    "start:api": "npm --prefix ./services/rest-api run start:dev"
+    "build:web": "npm --prefix ./apps/web run build",
+    "test:web": "npm --prefix ./apps/web run test",
+    "start:api": "npm --prefix ./services/rest-api run start:dev",
+    "build:api": "npm --prefix ./services/rest-api run build"
   },
   "author": "Nadeem Ahmad",
   "devDependencies": {
