@@ -106,8 +106,15 @@ Dark Mode Responsive Web UI             |  Light Mode Responsive Web UI
 
 ## Localization and Theme
 
-Column 2        |    Colum 2
+Column 1        |    Colum 2
 :-------------------------:|:-------------------------:
 ![](./screenshots/Web/Light%20Mode/Responsive/screencapture-localhost-3000-ae-2024-01-16-18_37_48.png) | ![](./screenshots/Web/Light%20Mode/Responsive/screencapture-localhost-3000-fr-2024-01-16-18_38_00.png)
 ![](./screenshots/Web/Light%20Mode/Responsive/screencapture-localhost-3000-in-2024-01-16-18_38_33.png) | ![](./screenshots/Web/Light%20Mode/Responsive/screencapture-localhost-3000-in-users-2024-01-16-18_39_48.png)
 ![](./screenshots/Web/Light%20Mode/Responsive/screencapture-localhost-3000-2024-01-16-18_35_23.png)
+
+## Mobile Apps
+
+Column 1        |    Colum 2
+:-------------------------:|:-------------------------:
+![](./screenshots/mobile/Screenshot%202024-01-17%20at%2012.18.20 AM.png) | ![](./screenshots/mobile/Screenshot%202024-01-17%20at%2012.19.11 AM.png)
+![](./screenshots/mobile/Screenshot%202024-01-17%20at%2012.20.20 AM.png)
