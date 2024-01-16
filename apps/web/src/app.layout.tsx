@@ -1,18 +1,27 @@
-import { AppBar, Avatar, Box, Button, Container, Link, Stack, Toolbar, Typography } from "@mui/material";
+import { Favorite } from "@mui/icons-material";
+import { AppBar, Avatar, Box, Container, Link, Stack, Toolbar, Typography } from "@mui/material";
 import { jwtDecode } from "jwt-decode";
 import { useCookies } from "react-cookie";
+import { useTranslation } from "react-i18next";
 import { NavLink, Outlet } from "react-router-dom";
 import CountrySelectorComponent from "./components/country-selector/country-selector.component";
 import ProfileMenuComponent from "./components/profile-menu/profile-menu.component";
-import SessionProviderComponent, { Session } from "./providers/session-provider/session-provider.component";
-import { Favorite } from "@mui/icons-material";
-import { useTranslation } from "react-i18next";
 import ToolbarActionsComponent from "./components/toolbar-actions/toolbar-actions.component";
+import SessionProviderComponent, { Session } from "./providers/session-provider/session-provider.component";
 import { getApiBaseUrl } from "./util";
+import { useEffect } from "react";
+import { Capacitor } from '@capacitor/core';
+import {
+    ActionPerformed,
+    PushNotificationSchema,
+    PushNotifications,
+    Token,
+} from '@capacitor/push-notifications';
 const AppLayout = () => {
     const [cookies] = useCookies(['mq-at']);
     const accessToken = cookies["mq-at"];
     const { data: user, exp: expiryTime = 0 } = (accessToken && jwtDecode(accessToken)) || {};
+    const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
     /**
      * Converting expiry time to milliseconds
      */
@@ -22,6 +31,42 @@ const AppLayout = () => {
         user,
         jwt: accessToken
     }
+    useEffect(() => {
+        if (isPushNotificationsAvailable) {
+            // Request permission to use push notifications
+            // iOS will prompt user and return if they granted permission or not
+            // Android will just grant without prompting
+            PushNotifications.requestPermissions().then(result => {
+                if (result.receive === 'granted') {
+                    // Register with Apple / Google to receive push via FCM (Firebase Cloud Messaging)
+                } else {
+                    // Show some error
+                }
+            });
+
+            PushNotifications.addListener('registration', (token: Token) => {
+                alert('Push registration success, token: ' + token.value);
+            });
+
+            PushNotifications.addListener('registrationError', (error: any) => {
+                alert('Error on registration: ' + JSON.stringify(error));
+            });
+
+            PushNotifications.addListener(
+                'pushNotificationReceived',
+                (notification: PushNotificationSchema) => {
+                    alert('Push received: ' + JSON.stringify(notification));
+                },
+            );
+
+            PushNotifications.addListener(
+                'pushNotificationActionPerformed',
+                (notification: ActionPerformed) => {
+                    alert('Push action performed: ' + JSON.stringify(notification));
+                },
+            );
+        }
+    }, [isPushNotificationsAvailable])
     return (
         <SessionProviderComponent session={session}>
             <AppBar component='header' position="sticky">

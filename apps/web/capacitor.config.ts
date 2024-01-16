@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.mashreqbank.app',
-  appName: 'web',
+  appName: 'Mashreq',
   webDir: 'build',
   server: {
     androidScheme: 'https'
