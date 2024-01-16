@@ -8,6 +8,7 @@ import SessionProviderComponent, { Session } from "./providers/session-provider/
 import { Favorite } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
 import ToolbarActionsComponent from "./components/toolbar-actions/toolbar-actions.component";
+import { getApiBaseUrl } from "./util";
 const AppLayout = () => {
     const [cookies] = useCookies(['mq-at']);
     const accessToken = cookies["mq-at"];
@@ -58,6 +59,14 @@ const AppLayout = () => {
                         <Typography>{translate('footer.for')}</Typography>
                         <Typography sx={{ fontWeight: 'bold' }} color='inherit' component={Link} href="https://www.mashreqbank.com/" target="_blank">
                             {translate('brandName')}
+                        </Typography>
+                    </Stack>
+                    <Stack alignItems="center" mt={5} mb={2}>
+                        <Typography variant="caption">
+                            Api Host
+                        </Typography>
+                        <Typography variant="caption">
+                            {getApiBaseUrl()}
                         </Typography>
                     </Stack>
                 </Stack>

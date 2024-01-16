@@ -1,10 +1,11 @@
 import { MimeType } from "../common.constant";
 import { User } from "../common.type";
 import { HttpHeader } from "../http.contstant";
-import { fromFetch, getApiHeaders } from "../util";
+import { fromFetch, getApiBaseUrl, getApiHeaders } from "../util";
 
 export const createUser = async (payload: any) => {
-    const endpoint = 'http://localhost:3002/v1/users';
+    const apiBaseUrl = getApiBaseUrl();
+    const endpoint = `${apiBaseUrl}/v1/users`;
     const fetchRef = fetch(endpoint, {
         method: "PUT",
         headers: {
@@ -19,7 +20,8 @@ export const createUser = async (payload: any) => {
 export const getAllUsers = async (
     token?: string | null,
 ) => {
-    const endpoint = 'http://localhost:3002/v1/users';
+    const apiBaseUrl = getApiBaseUrl();
+    const endpoint = `${apiBaseUrl}/v1/users`;
     let headers = getApiHeaders(token);
     const fetchRef = fetch(endpoint, {
         method: "GET",

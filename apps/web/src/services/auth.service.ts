@@ -1,9 +1,10 @@
 import { MimeType } from "../common.constant";
 import { HttpHeader } from "../http.contstant";
-import { fromFetch } from "../util";
+import { fromFetch, getApiBaseUrl } from "../util";
 
 export const signIn = async (payload: { username: string, password: string }) => {
-    const endpoint = 'http://localhost:3002/v1/auth';
+    const apiBaseUrl = getApiBaseUrl();
+    const endpoint = `${apiBaseUrl}/v1/auth`;
     const fetchRef = fetch(endpoint, {
         method: "POST",
         headers: {

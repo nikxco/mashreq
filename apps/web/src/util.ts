@@ -190,3 +190,12 @@ export const getPaletteByCountry = (country: Country): { primary?: PaletteColorO
 export const DefaultCountryCode = 'US';
 
 export const DefaultCountry: Country = getSupportedContries().find((country) => country.code === DefaultCountryCode)!
+
+export const getApiBaseUrl = () => {
+    let baseUrl = process.env.REACT_APP_API_URI;
+    if (!baseUrl) {
+        throw Error('REACT_APP_API_URI is not available')
+    }
+    return baseUrl;
+
+}
