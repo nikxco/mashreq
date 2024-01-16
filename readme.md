@@ -88,6 +88,10 @@ In order access api routes (protected/open) `x-api-key` header must be present a
 
 Environment variables can be used with Api Server `(.env file)` as well as Web UI `(.env.development, .env.production, and .env.test files)` for defining environment specific variables like session expiry, api key etc..
 
+Postman collection and environment files are available inside `rest-api` folder for testing REST api.
+
+# Screenshots
+
 Dark Mode Web UI             |  Light Mode Web UI
 :-------------------------:|:-------------------------:
 ![](./screenshots/Web//Dark%20Mode/screencapture-localhost-3000-2024-01-16-20_00_48.png)  |  ![](./screenshots//Web//Light%20Mode/screencapture-localhost-3000-2024-01-16-18_27_37.png)
