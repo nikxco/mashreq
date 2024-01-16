@@ -1,6 +1,6 @@
 # Mashreq Monorepo
 
-This is a mono repo containing source code for Mashreq apps (web, Android, and iOS).
+This is a monorepo containing source code for Mashreq apps (web, Android, and iOS).
 
 App is built on top of React 18, and uses an NodeJS/ExpressJS based REST Api server to save and authenticate users.
 
@@ -31,7 +31,7 @@ RTL Layout can also be implemented for Arabic Locale but skipped for now intenti
 
 ### API Server
 
-- 1: Clone the mono repo.
+- 1: Clone the monorepo.
 - 2: Navigate to root directory of the repo.
 - 3: Run `npm install`
 - 4: Start Rest API server in development mode using `npm run start:api`
@@ -42,7 +42,7 @@ RTL Layout can also be implemented for Arabic Locale but skipped for now intenti
 
 ### Web Application
 
-- 1: Clone the mono repo.
+- 1: Clone the monorepo.
 - 2: Navigate to root directory of the repo.
 - 3: Run `npm install`
 - 4: Start Web UI in development mode using `npm run start:web`.
@@ -59,7 +59,7 @@ RTL Layout can also be implemented for Arabic Locale but skipped for now intenti
 You'll be needing Android Studio and Xcode Editor to work with mobile apps*
 
 
-- 1: Clone the mono repo.
+- 1: Clone the monorepo.
 - 2: Navigate to root directory of the repo.
 - 3: Run `npm install`
 - 4: Build web UI `npm run build:web`
