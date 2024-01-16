@@ -68,6 +68,7 @@ const AppLayout = () => {
                         <Typography variant="caption">
                             {getApiBaseUrl()}
                         </Typography>
+                        <Typography variant="caption">(1.0.0)</Typography>
                     </Stack>
                 </Stack>
             </Container>
