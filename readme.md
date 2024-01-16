@@ -12,6 +12,8 @@ All apps support Dark mode based on device/system preference.
 
 All apps supports 4 locales (Arabic, English, French, and Hindi) based on selected country.
 
+RTL Layout can also be implemented for Arabic Locale but skipped for now intentionally.
+
 **United States of America (English locale)** is default selection.
 
 
