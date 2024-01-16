@@ -92,6 +92,8 @@ Environment variables can be used with Api Server `(.env file)` as well as Web U
 
 Postman collection and environment files are available inside `rest-api` folder for testing REST api.
 
+`Api Host` label on the footer of the application shows the api server location that application is pointing to for storing the data and authenticating the user (make sure it's running and accesible).
+
 # Screenshots
 
 Dark Mode Web UI             |  Light Mode Web UI
