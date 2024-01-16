@@ -55,7 +55,7 @@ const CountrySelectorComponent = () => {
             <Avatar
                 variant="rounded"
                 sx={{ width: 24, height: 24 }}
-                src={`http://purecatamphetamine.github.io/country-flag-icons/1x1/${code}.svg`}
+                src={`flags/${code}.svg`}
             />
         )
     }

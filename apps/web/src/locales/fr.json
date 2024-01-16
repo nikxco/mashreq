@@ -6,9 +6,9 @@
         },
         "buttons": {
             "create": "Créer",
-            "createAccount": "Créer un compte ?",
-            "signInInstead": "Se connecter plutôt ?",
-            "signIn": "Se connecter",
+            "createAccount": "Créer un compte",
+            "signInInstead": "S'identifier plutôt ?",
+            "signIn": "S'identifier",
             "signUp": "S'inscrire",
             "signOut": "Se déconnecter",
             "goHome": "Accueil",
@@ -24,9 +24,9 @@
             "allUsers": "Tous les utilisateurs"
         },
         "signInPage": {
-            "title": "Se connecter | Banque en ligne Mashreq",
+            "title": "S'identifier | Banque en ligne Mashreq",
             "form": {
-                "title": "Se connecter",
+                "title": "S'identifier",
                 "inputs": {
                     "username": {
                         "label": "Nom d'utilisateur",
@@ -38,7 +38,7 @@
                     }
                 },
                 "buttons": {
-                    "signIn": "Se connecter"
+                    "signIn": "S'identifier"
                 },
                 "tooltips": {
                     "hidePassword": "Masquer le mot de passe",
