@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "2e708454-75ca-47b5-bd1e-1f0d7fd2c3a4",
+		"name": "Mashreq",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "5366472",
+		"_collection_link": "https://marqit.postman.co/workspace/Marqit-API-Workspace~7224c65b-4a37-4554-8f36-c1d6f3d0f9f1/collection/5366472-2e708454-75ca-47b5-bd1e-1f0d7fd2c3a4?action=share&source=collection_link&creator=5366472"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{apiKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"NadeemAhmad\",\n    \"password\":\"mashreq@password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/{{basePath}}/auth"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{apiKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"NadeemAhmad\",\n    \"password\":\"mashre@password\",\n    \"confirmPassword\":\"mashre@password\",\n    \"basename\":\"/us\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/{{basePath}}/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTVkODM0ODEtYTMzNS00MWM5LTg2ZTUtODU1NTU1MDcxYWQ2IiwidXNlcm5hbWUiOiJOYWRlZW1BaG1hZCJ9LCJpYXQiOjE3MDUyNDMwMTUsImV4cCI6MTcwNTI0MzA0NX0.0DheueRyj58moT7jYaNXogyyN8nUwua8ZuewkZWuKLE"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{apiKey}}",
+								"type": "text"
+							}
+						],
+						"url": "{{host}}/{{basePath}}/users"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
